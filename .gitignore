@@ -1,0 +1,14 @@
+# Unity generated folders
+**/Library/
+**/Temp/
+**/Obj/
+**/Logs/
+**/UserSettings/
+
+# Build cache
+**/Build/
+**/Builds/
+
+# OS files
+.DS_Store
+Thumbs.db
