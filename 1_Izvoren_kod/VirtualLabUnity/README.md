@@ -115,17 +115,6 @@ The project includes a simple 3D Box/Cardboard-style VR mode:
 
 On Android/mobile, VR mode starts automatically. On PC, press V to preview it and use the mouse to simulate head movement.
 
-## Android build steps for 3D Box
-
-1. In Unity, open File > Build Profiles or File > Build Settings.
-2. Select Android.
-3. Click Switch Platform.
-4. In Player Settings, set orientation to Landscape Left or Landscape Right.
-5. Make sure Assets/Scenes/VirtualLab.unity is included in the scene list.
-6. Click Build or Build And Run.
-7. Put the phone into a 3D Box/Cardboard viewer.
-8. Use gaze selection to interact with jars and buttons.
-
 ## Assignment coverage
 
 This project satisfies the required topic by including:
@@ -139,14 +128,8 @@ This project satisfies the required topic by including:
 - observation/result messages
 - a mobile 3D Box VR mode with stereo rendering, gyro head tracking, and gaze interaction
 
-## Short presentation description
+## Contributors
 
-This Unity application represents a virtual chemistry laboratory. The user selects substances from the shelf, measures them on a scale, prepares a sample in a test tube, pours it into glassware, mixes substances to observe reactions, and heats the prepared solution in a round-bottom flask using a Bunsen burner. The system responds with color changes, smoke, bubbles, flame, sound effects, and result messages. The project also includes a mobile 3D Box VR mode with split-screen stereo view, gyroscope head tracking, and gaze-based interaction.
-
-## Macedonian presentation text, transliterated
-
-Aplikacijata e izrabotena vo Unity kako virtuelna laboratorija za eksperimenti so supstancii. Korisnikot izbira supstancii od polica, gi meri na vaga, podgotvuva primerok vo epruveta, gi dodava vo casa za mesanje, gi nabljuduva reakciite i moze da go zagree rastvorot vo kolba so plamenik. Sistemot dava vizuelni reakcii kako promena na boja, meurcinja, cad i plamen, kako i zvucni efekti. Aplikacijata ima i 3D Box VR rezim so stereoskopski prikaz, sledenje na glavata preku ziroskop i interakcija so pogled.
-
-## Possible future Oculus Quest upgrade
-
-For Oculus Quest, the next step would be to install XR Plug-in Management, OpenXR, and XR Interaction Toolkit. The gaze interaction could then be replaced or extended with controller ray interaction or hand tracking. The current project already separates interaction actions from mouse clicks, so it can be upgraded toward Oculus Quest more easily.
+Marija Blazheska 221503
+Darko Milenkoski 
+Aleksandar Panovski 

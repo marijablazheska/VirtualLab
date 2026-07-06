@@ -1,0 +1,8 @@
+D:/Users/User/Desktop/Codex/outputs/VirtualLab_Submission/1_Izvoren_kod/VirtualLabUnity/.utmp/RelWithDebInfo/6895492u/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Users/User/Desktop/Codex/outputs/VirtualLab_Submission/1_Izvoren_kod/VirtualLabUnity/.utmp/RelWithDebInfo/6895492u/arm64-v8a/CMakeFiles/rebuild_cache.dir
+D:/Users/User/Desktop/Codex/outputs/VirtualLab_Submission/1_Izvoren_kod/VirtualLabUnity/.utmp/RelWithDebInfo/6895492u/arm64-v8a/GameActivity/CMakeFiles/game.dir
+D:/Users/User/Desktop/Codex/outputs/VirtualLab_Submission/1_Izvoren_kod/VirtualLabUnity/.utmp/RelWithDebInfo/6895492u/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+D:/Users/User/Desktop/Codex/outputs/VirtualLab_Submission/1_Izvoren_kod/VirtualLabUnity/.utmp/RelWithDebInfo/6895492u/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+D:/Users/User/Desktop/Codex/outputs/VirtualLab_Submission/1_Izvoren_kod/VirtualLabUnity/.utmp/RelWithDebInfo/6895492u/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+D:/Users/User/Desktop/Codex/outputs/VirtualLab_Submission/1_Izvoren_kod/VirtualLabUnity/.utmp/RelWithDebInfo/6895492u/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+D:/Users/User/Desktop/Codex/outputs/VirtualLab_Submission/1_Izvoren_kod/VirtualLabUnity/.utmp/RelWithDebInfo/6895492u/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

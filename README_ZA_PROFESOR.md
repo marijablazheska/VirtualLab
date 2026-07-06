@@ -1,6 +1,6 @@
 # VirtualLab Submission Package
 
-Ovoj folder e organiziran spored baranite 5 tocki od zadacata.
+Ovoj folder e organiziran spored baranite 5 tocki od zadacata.Zadachata 
 
 ## 1. Izvoren kod
 

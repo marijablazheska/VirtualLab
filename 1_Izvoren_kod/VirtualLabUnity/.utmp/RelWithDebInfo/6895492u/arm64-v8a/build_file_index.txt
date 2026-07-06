@@ -1,0 +1,3 @@
+D:\Users\User\Desktop\Codex\outputs\VirtualLab_Submission\1_Izvoren_kod\VirtualLabUnity\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\Users\User\Desktop\Codex\outputs\VirtualLab_Submission\1_Izvoren_kod\VirtualLabUnity\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\FramePacing\CMakeLists.txt
+D:\Users\User\Desktop\Codex\outputs\VirtualLab_Submission\1_Izvoren_kod\VirtualLabUnity\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

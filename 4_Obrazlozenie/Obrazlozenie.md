@@ -90,19 +90,7 @@ Primer za Acid + Carbonate reakcija:
 7. Pritisni Mesaj.
 8. Nabljuduvaj cad/meurcinja, promena i zvucen efekt.
 
-## 9. Sliki od aplikacijata
-
-Vo folderot sliki/ treba da se stavat screenshots od aplikacijata. Preporacani sliki:
-
-- pocetna laboratoriska scena
-- merenje na vaga i primerok vo epruveta
-- dodavanje vo casa
-- reakcija so promena na boja
-- reakcija so cad/meurcinja
-- zagrevanje vo kolba so plamenik
-- VR split-screen prikaz
-
-## 10. Referenci i koristeni resursi
+## 9. Referenci i koristeni resursi
 
 - Unity Manual / Unity Documentation za osnoven 3D workflow, GameObjects, Materials, Cameras, AudioSource i ParticleSystem.
 - Unity C# API za runtime kreiranje objekti i interakcija so OnMouseDown/Raycast.
