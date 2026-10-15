@@ -6,6 +6,7 @@ using UnityEngine;
 public class VirtualLabBootstrap : MonoBehaviour
 {
     private readonly List<string> vessel = new List<string>();
+    private readonly Dictionary<string, float> vesselAmounts = new Dictionary<string, float>();
     private readonly Dictionary<string, Substance> substances = new Dictionary<string, Substance>();
     private readonly List<Renderer> liquidRenderers = new List<Renderer>();
     private Material liquidMaterial;
@@ -13,11 +14,12 @@ public class VirtualLabBootstrap : MonoBehaviour
     private Renderer tubeLiquidRenderer;
     private Renderer flaskLiquidRenderer;
     private Renderer precipitateRenderer;
-    private Renderer scaleRenderer;
     private TextMesh selectedText;
     private TextMesh logText;
     private TextMesh temperatureText;
     private TextMesh scaleText;
+    private TextMesh scaleDisplay;
+    private float measuredGrams;
     private ParticleSystem smoke;      // gas inside the beaker
     private ParticleSystem bubbles;    // bubbles inside the beaker
     private ParticleSystem heatSmoke;  // vapour in the flask neck
@@ -33,6 +35,16 @@ public class VirtualLabBootstrap : MonoBehaviour
     private bool burnerOn;
     private LlmReactionService llm;
     private bool reacting;
+    private bool animating;
+    private bool sampleMeasured;
+    private bool inFlask;
+    private Transform tubeRig, flaskRig, beakerRig;
+    private readonly Vector3 tubeHome = new Vector3(-.25f, 1.32f, -.18f);
+    private readonly Vector3 flaskHome = new Vector3(1.05f, 1.27f, -.15f);
+    private readonly Vector3 beakerHome = new Vector3(-1.65f, 1.25f, -.2f);
+    private readonly Dictionary<string, Transform> jars = new Dictionary<string, Transform>();
+    private readonly Dictionary<string, Vector3> jarHomes = new Dictionary<string, Vector3>();
+    private LineRenderer pourStream;
 
     // Short chemistry hints sent to the LLM (the jar names alone are ambiguous)
     private readonly Dictionary<string, string> chem = new Dictionary<string, string>
@@ -86,6 +98,8 @@ public class VirtualLabBootstrap : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectSubstance("copper");
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSubstance("carbonate");
         if (Input.GetKeyDown(KeyCode.M)) MeasureSelected();
+        if (Input.GetKeyDown(KeyCode.UpArrow)) AdjustMeasurement(.1f);
+        if (Input.GetKeyDown(KeyCode.DownArrow)) AdjustMeasurement(-.1f);
         if (Input.GetKeyDown(KeyCode.P)) PourSelected();
         if (Input.GetKeyDown(KeyCode.X)) Mix();
         if (Input.GetKeyDown(KeyCode.H)) ToggleHeat();
@@ -162,6 +176,17 @@ public class VirtualLabBootstrap : MonoBehaviour
         smoke.Stop();
         bubbles.Stop();
         heatSmoke.Stop();
+        tubeRig = CreateRig("Tube Movement", tubeHome, GameObject.Find("Test Tube").transform, tubeLiquidRenderer.transform);
+        flaskRig = CreateRig("Flask Movement", flaskHome, GameObject.Find("Flask").transform,
+            GameObject.Find("Flask Neck").transform, flaskLiquidRenderer.transform, heatSmoke.transform);
+        beakerRig = CreateRig("Beaker Movement", beakerHome, GameObject.Find("Beaker").transform,
+            beakerLiquidRenderer.transform, precipitateRenderer.transform);
+        pourStream = new GameObject("Pour Stream").AddComponent<LineRenderer>();
+        pourStream.material = NewMaterial(Color.white);
+        pourStream.startWidth = .035f;
+        pourStream.endWidth = .025f;
+        pourStream.positionCount = 2;
+        pourStream.enabled = false;
     }
 
     private void BuildPanel()
@@ -285,15 +310,50 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void CreateScale(Vector3 pos)
     {
-        var scale = CreateCube("Scale", pos, new Vector3(.92f, .28f, .6f), new Color(.84f, .88f, .92f));
-        scaleRenderer = scale.GetComponent<Renderer>();
+        CreateCube("Scale", pos, new Vector3(.92f, .28f, .6f), new Color(.36f, .41f, .48f));
+        var tray = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        tray.name = "Scale Weighing Tray";
+        tray.transform.position = pos + Vector3.up * .155f;
+        tray.transform.localScale = new Vector3(.7f, .015f, .48f);
+        tray.GetComponent<Renderer>().material = NewMaterial(new Color(.36f, .41f, .48f));
+
+        var controls = new GameObject("Scale Display and Controls").transform;
+        controls.position = pos + new Vector3(0f, .02f, -.39f);
+        controls.rotation = Quaternion.Euler(28f, 0f, 0f);
+        var panel = CreateCube("Scale Control Housing", Vector3.zero, new Vector3(.92f, .29f, .06f), new Color(.36f, .41f, .48f));
+        panel.transform.SetParent(controls, false);
+        var screen = CreateCube("Scale LCD", new Vector3(-.09f, 0f, -.04f), new Vector3(.61f, .18f, .025f), new Color(.63f, .72f, .61f));
+        screen.transform.SetParent(controls, false);
+        scaleDisplay = AddPanelText("0.0 g", Vector3.zero, .045f, FontStyle.Bold);
+        scaleDisplay.transform.SetParent(controls, false);
+        scaleDisplay.transform.localPosition = new Vector3(-.35f, .075f, -.06f);
+        scaleDisplay.fontStyle = FontStyle.Normal;
+        scaleDisplay.color = new Color(.08f, .15f, .1f);
+        CreateScaleButton(controls, "+", "scaleUp", new Vector3(.33f, .075f, -.05f));
+        CreateScaleButton(controls, "-", "scaleDown", new Vector3(.33f, -.075f, -.05f));
         AddLabel("vaga", pos + Vector3.up * .45f);
+    }
+
+    private void CreateScaleButton(Transform controls, string label, string action, Vector3 position)
+    {
+        var button = CreateCube("Scale " + action, position, new Vector3(.17f, .12f, .055f), new Color(.18f, .22f, .27f));
+        button.transform.SetParent(controls, false);
+        var clickable = button.AddComponent<LabActionButton>();
+        clickable.Lab = this;
+        clickable.Action = action;
+        var text = AddPanelText(label, Vector3.zero, .035f, FontStyle.Bold);
+        text.transform.SetParent(controls, false);
+        text.transform.localPosition = position + new Vector3(0f, 0f, -.035f);
+        text.anchor = TextAnchor.MiddleCenter;
+        text.color = Color.white;
     }
 
     private void CreateSubstanceJar(string key, Vector3 pos)
     {
         var jar = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         jar.name = substances[key].Name;
+        jars[key] = jar.transform;
+        jarHomes[key] = pos;
         jar.transform.position = pos;
         jar.transform.localScale = new Vector3(.25f, .42f, .25f);
         jar.GetComponent<Renderer>().material = NewMaterial(substances[key].Color);
@@ -402,13 +462,36 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     public void SelectSubstance(string key)
     {
+        if (animating || reacting) return;
+        if (inFlask) { Log("Rastvorot e vo kolba. Reset za nov eksperiment."); return; }
+        if (tubeHasSample) { Log("Prvo izmeri i dodaj go primerokot od epruveta."); return; }
+        StartCoroutine(FillTube(key));
+    }
+
+    private IEnumerator FillTube(string key)
+    {
+        animating = true;
         selectedKey = key;
-        selectedText.text = substances[key].Name + " e izbrana za merenje ili dodavanje.";
+        selectedText.text = substances[key].Name + " e izbrana.";
+        Transform jar = jars[key];
+        Vector3 aboveTube = tubeHome + new Vector3(.35f, 1.35f, 0f);
+        yield return MoveEquipment(jar, aboveTube, Quaternion.Euler(0f, 0f, 110f));
+        yield return PourAnimation(jar, Vector3.up, tubeRig, new Vector3(0f, .8f, 0f), substances[key].Color);
+        tubeSampleKey = key;
+        tubeHasSample = true;
+        sampleMeasured = false;
+        ShowTubeSample(substances[key].Color);
+        yield return MoveEquipment(jar, jarHomes[key], Quaternion.identity);
+        Log("Primerokot e vo epruveta. Pritisni Meri.");
+        animating = false;
         Beep(620f, .08f);
     }
 
     public void RunAction(string action)
     {
+        if (action != "reset" && (animating || reacting)) return;
+        if (action == "scaleUp") AdjustMeasurement(.1f);
+        if (action == "scaleDown") AdjustMeasurement(-.1f);
         if (action == "measure") MeasureSelected();
         if (action == "pour") PourSelected();
         if (action == "mix") Mix();
@@ -419,34 +502,59 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void MeasureSelected()
     {
-        if (string.IsNullOrEmpty(selectedKey))
+        if (animating || reacting) return;
+        if (!tubeHasSample)
         {
             Log("Prvo izberi supstancija za merenje.");
             return;
         }
-        float grams = substances[selectedKey].Grams + Random.Range(-.3f, .3f);
-        scaleText.text = "Vaga: " + grams.ToString("0.0") + " g";
-        if (scaleRenderer != null) scaleRenderer.material.color = new Color(1f, .88f, .35f);
-        tubeSampleKey = selectedKey;
-        tubeHasSample = true;
-        ShowTubeSample(substances[selectedKey].Color);
-        Log("Vagata meri " + grams.ToString("0.0") + " g, a mal primerok e staven vo epruveta.");
+        if (sampleMeasured) return;
+        StartCoroutine(WeighTube());
+    }
+
+    private IEnumerator WeighTube()
+    {
+        animating = true;
+        yield return MoveEquipment(tubeRig, new Vector3(-2.95f, 2.18f, -.28f), Quaternion.identity);
+        yield return new WaitForSeconds(.4f);
+        float grams = substances[tubeSampleKey].Grams + Random.Range(-.3f, .3f);
+        measuredGrams = Mathf.Round(grams * 10f) / 10f;
+        UpdateScaleDisplay();
+        UpdateSampleLevel();
+        sampleMeasured = true;
+        Log("Izmereno: " + measuredGrams.ToString("0.0") + " g. +/- za kolicina, Dodaj za isturanje.");
+        animating = false;
         Beep(780f, .08f);
     }
 
     private void PourSelected()
     {
-        if (!tubeHasSample || string.IsNullOrEmpty(tubeSampleKey))
+        if (animating || reacting) return;
+        if (!tubeHasSample || !sampleMeasured)
         {
-            Log("Prvo izmeri supstancija na vaga; primerokot ke se pojavi vo epruveta.");
+            Log("Izberi supstancija za polnenje na epruvetata, potoa pritisni Meri.");
             return;
         }
+        StartCoroutine(PourTube());
+    }
 
+    private IEnumerator PourTube()
+    {
+        animating = true;
+        yield return MoveEquipment(tubeRig, beakerHome + new Vector3(.65f, 1.1f, 0f), Quaternion.Euler(0f, 0f, 105f));
+        yield return PourAnimation(tubeRig, new Vector3(0f, .92f, 0f), beakerRig, new Vector3(0f, .6f, 0f), substances[tubeSampleKey].Color);
         vessel.Add(tubeSampleKey);
+        if (!vesselAmounts.ContainsKey(tubeSampleKey)) vesselAmounts[tubeSampleKey] = 0f;
+        vesselAmounts[tubeSampleKey] += measuredGrams;
         UpdateBeakerLiquid(MixColors());
         string addedName = substances[tubeSampleKey].Name;
+        float addedGrams = measuredGrams;
         ClearTubeSample();
-        Log(addedName + " od epruveta e dodadena vo casa za mesanje.");
+        yield return MoveEquipment(tubeRig, tubeHome, Quaternion.identity);
+        measuredGrams = 0f;
+        UpdateScaleDisplay();
+        animating = false;
+        Log(addedName + ": " + addedGrams.ToString("0.0") + " g od epruveta se dodadeni vo casa.");
         Beep(420f, .12f);
     }
 
@@ -464,6 +572,7 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void Mix()
     {
+        if (animating || reacting) return;
         if (vessel.Count < 2)
         {
             Log("Za reakcija se potrebni najmalku dve supstancii vo sadot.");
@@ -471,11 +580,22 @@ public class VirtualLabBootstrap : MonoBehaviour
         }
         if (reacting) return;
 
-        // 1) the three known reactions stay static (instant, always correct)
-        if (TryStaticReaction()) return;
+        StartCoroutine(MixAnimated());
+    }
 
-        // 2) anything else goes to the LLM
-        StartCoroutine(MixWithLlm());
+    private IEnumerator MixAnimated()
+    {
+        animating = true;
+        Transform container = inFlask ? flaskRig : beakerRig;
+        Vector3 home = container.position;
+        for (int i = 0; i < 4; i++)
+        {
+            yield return MoveEquipment(container, home + new Vector3(.08f, .07f, 0f), Quaternion.Euler(0f, 0f, -8f), .15f);
+            yield return MoveEquipment(container, home - new Vector3(.08f, -.07f, 0f), Quaternion.Euler(0f, 0f, 8f), .15f);
+        }
+        yield return MoveEquipment(container, home, Quaternion.identity, .2f);
+        animating = false;
+        if (!TryStaticReaction()) yield return MixWithLlm();
     }
 
     private void ClearReactionEffects()
@@ -541,7 +661,8 @@ public class VirtualLabBootstrap : MonoBehaviour
 
         Log("Se presmetuva reakcijata...");
         var names = new List<string>();
-        foreach (var k in vessel) names.Add(chem[k]);
+        foreach (var entry in vesselAmounts)
+            names.Add(chem[entry.Key] + ": " + entry.Value.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + " g");
 
         ReactionResult res = null;
         yield return llm.GetReaction(names, r => res = r);
@@ -580,9 +701,16 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void ToggleHeat()
     {
+        if (animating || reacting) return;
         if (vessel.Count == 0)
         {
             Log("Prvo dodaj supstancija vo casa, potoa zagrevaj vo kolba.");
+            return;
+        }
+
+        if (!inFlask)
+        {
+            StartCoroutine(TransferAndHeat());
             return;
         }
 
@@ -605,10 +733,74 @@ public class VirtualLabBootstrap : MonoBehaviour
         }
     }
 
+    private Transform CreateRig(string name, Vector3 position, params Transform[] parts)
+    {
+        var rig = new GameObject(name).transform;
+        rig.position = position;
+        foreach (var part in parts) part.SetParent(rig, true);
+        return rig;
+    }
+
+    private IEnumerator MoveEquipment(Transform equipment, Vector3 destination, Quaternion rotation, float duration = .7f)
+    {
+        Vector3 start = equipment.position;
+        Quaternion startRotation = equipment.rotation;
+        for (float elapsed = 0f; elapsed < duration; elapsed += Time.deltaTime)
+        {
+            float t = Mathf.SmoothStep(0f, 1f, elapsed / duration);
+            equipment.position = Vector3.Lerp(start, destination, t) + Vector3.up * (Mathf.Sin(t * Mathf.PI) * .25f);
+            equipment.rotation = Quaternion.Slerp(startRotation, rotation, t);
+            yield return null;
+        }
+        equipment.SetPositionAndRotation(destination, rotation);
+    }
+
+    private IEnumerator PourAnimation(Transform source, Vector3 spout, Transform target, Vector3 opening, Color color)
+    {
+        pourStream.startColor = color;
+        pourStream.endColor = color;
+        pourStream.material.color = color;
+        pourStream.enabled = true;
+        for (float elapsed = 0f; elapsed < .8f; elapsed += Time.deltaTime)
+        {
+            pourStream.SetPosition(0, source.TransformPoint(spout));
+            pourStream.SetPosition(1, target.TransformPoint(opening));
+            yield return null;
+        }
+        pourStream.enabled = false;
+    }
+
+    private IEnumerator TransferAndHeat()
+    {
+        animating = true;
+        ClearReactionEffects();
+        yield return MoveEquipment(beakerRig, flaskHome + new Vector3(.75f, 1.5f, 0f), Quaternion.Euler(0f, 0f, 100f));
+        yield return PourAnimation(beakerRig, new Vector3(0f, .72f, 0f), flaskRig, new Vector3(0f, .9f, 0f), currentLiquidColor);
+        beakerLiquidRenderer.enabled = false;
+        UpdateFlaskLiquid(currentLiquidColor);
+        inFlask = true;
+        yield return MoveEquipment(beakerRig, beakerHome, Quaternion.identity);
+        yield return MoveEquipment(flaskRig, new Vector3(2.35f, 2.2f, -.25f), Quaternion.identity);
+        smoke.transform.position = flaskRig.position + new Vector3(0f, .45f, 0f);
+        bubbles.transform.position = flaskRig.position + new Vector3(0f, -.15f, 0f);
+        precipitateRenderer.transform.SetParent(flaskRig, true);
+        precipitateRenderer.transform.position = flaskRig.position + new Vector3(0f, -.22f, -.03f);
+        animating = false;
+        ToggleHeat();
+        // Reuse the existing chemistry rules after the visible transfer and heating.
+        if (vessel.Count >= 2) Mix();
+    }
+
     private void QuickFill(params string[] keys)
     {
+        if (animating || reacting) return;
         ResetExperiment();
-        foreach (var k in keys) vessel.Add(k);
+        foreach (var k in keys)
+        {
+            vessel.Add(k);
+            if (!vesselAmounts.ContainsKey(k)) vesselAmounts[k] = 0f;
+            vesselAmounts[k] += substances[k].Grams;
+        }
         UpdateBeakerLiquid(MixColors());
         Log("Test: dodadeni se " + string.Join(" + ", keys) + ". Pritisni X za mesanje.");
     }
@@ -621,7 +813,22 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void ResetExperiment()
     {
+        StopAllCoroutines();
+        animating = false;
+        reacting = false;
+        inFlask = false;
+        sampleMeasured = false;
+        pourStream.enabled = false;
+        tubeRig.SetPositionAndRotation(tubeHome, Quaternion.identity);
+        flaskRig.SetPositionAndRotation(flaskHome, Quaternion.identity);
+        beakerRig.SetPositionAndRotation(beakerHome, Quaternion.identity);
+        foreach (var entry in jars) entry.Value.SetPositionAndRotation(jarHomes[entry.Key], Quaternion.identity);
+        smoke.transform.position = beakerHome + new Vector3(0f, .05f, 0f);
+        bubbles.transform.position = beakerHome + new Vector3(0f, -.35f, 0f);
+        precipitateRenderer.transform.SetParent(beakerRig, true);
+        precipitateRenderer.transform.position = beakerHome + new Vector3(0f, -.37f, -.03f);
         vessel.Clear();
+        vesselAmounts.Clear();
         selectedKey = null;
         tubeSampleKey = null;
         tubeHasSample = false;
@@ -634,8 +841,8 @@ public class VirtualLabBootstrap : MonoBehaviour
         UpdateTemperature();
         ClearLiquids();
         selectedText.text = "Nema izbrana supstancija.";
-        scaleText.text = "Vaga: 0.0 g";
-        if (scaleRenderer != null) scaleRenderer.material.color = new Color(.84f, .88f, .92f);
+        measuredGrams = 0f;
+        UpdateScaleDisplay();
         Log("Eksperimentot e resetiran.");
     }
 
@@ -643,8 +850,13 @@ public class VirtualLabBootstrap : MonoBehaviour
     {
         if (vessel.Count == 0) return new Color(.25f, .68f, .93f, .72f);
         Color color = Color.clear;
-        foreach (var key in vessel) color += substances[key].Color;
-        color /= vessel.Count;
+        float total = 0f;
+        foreach (var entry in vesselAmounts)
+        {
+            color += substances[entry.Key].Color * entry.Value;
+            total += entry.Value;
+        }
+        color /= total;
         color.a = .78f;
         return color;
     }
@@ -653,6 +865,7 @@ public class VirtualLabBootstrap : MonoBehaviour
     {
         currentLiquidColor = color;
         liquidMaterial.color = color;
+        if (inFlask) { UpdateFlaskLiquid(color); return; }
         if (beakerLiquidRenderer != null)
         {
             beakerLiquidRenderer.enabled = true;
@@ -662,6 +875,8 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void ShowTubeSample(Color color)
     {
+        tubeLiquidRenderer.transform.localScale = new Vector3(.17f, .24f, .17f);
+        tubeLiquidRenderer.transform.localPosition = new Vector3(0f, -.34f, -.025f);
         Color sampleColor = color;
         sampleColor.a = .78f;
         if (tubeLiquidRenderer != null)
@@ -673,6 +888,7 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void ClearTubeSample()
     {
+        sampleMeasured = false;
         tubeSampleKey = null;
         tubeHasSample = false;
         if (tubeLiquidRenderer != null) tubeLiquidRenderer.enabled = false;
@@ -704,6 +920,35 @@ public class VirtualLabBootstrap : MonoBehaviour
     private void UpdateTemperature()
     {
         temperatureText.text = "Temperatura: " + Mathf.RoundToInt(temperature) + " C";
+    }
+
+    private void UpdateScaleDisplay()
+    {
+        string reading = measuredGrams.ToString("0.0") + " g";
+        scaleDisplay.text = reading;
+        scaleText.text = "Vaga: " + reading;
+    }
+
+    private void AdjustMeasurement(float delta)
+    {
+        if (animating || reacting) return;
+        if (!tubeHasSample || !sampleMeasured)
+        {
+            Log("Prvo napolni epruveta i pritisni Meri. Potoa koristi +/- na vagata.");
+            return;
+        }
+        measuredGrams = Mathf.Clamp(Mathf.Round((measuredGrams + delta) * 10f) / 10f, .1f, 20f);
+        UpdateScaleDisplay();
+        UpdateSampleLevel();
+        Log("Primerok: " + measuredGrams.ToString("0.0") + " g. Pritisni Dodaj.");
+    }
+
+    private void UpdateSampleLevel()
+    {
+        // Illustrative sample level, anchored at the bottom of the tube.
+        float halfHeight = Mathf.Lerp(.02f, .55f, measuredGrams / 20f);
+        tubeLiquidRenderer.transform.localScale = new Vector3(.17f, halfHeight, .17f);
+        tubeLiquidRenderer.transform.localPosition = new Vector3(0f, -.58f + halfHeight, -.025f);
     }
 
     private void Log(string message)

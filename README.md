@@ -32,10 +32,10 @@ The same actions are also available from the in-scene control panel.
 
 ## Laboratory equipment and its role
 
-- Vaga / scale: used by the Meri action. It measures the selected substance and gives visual feedback by changing color.
-- Epruveta / test tube: receives a small sample after measuring. The sample appears inside the test tube.
+- Vaga / scale: Meri moves the filled tube onto the scale. An LCD-style display on the scale shows grams. Its + / - buttons (or Up / Down arrows) adjust the weighed sample in 0.1 g steps from 0.1 to 20 g. Dodaj pours that amount; the display returns to zero. The body stays dark gray.
+- Epruveta / test tube: receives a sample when the selected jar lifts from the shelf and pours into it. Meri moves the filled tube onto the scale; Dodaj lifts and tilts it over the cup, with a visible pouring stream.
 - Casa / glassware: the main mixing vessel. Measured samples are poured from the test tube into the glassware.
-- Kolba / round-bottom flask: used for heating. When heating starts, the prepared solution is shown in the flask.
+- Kolba / round-bottom flask: Zagrej pours the cup into the flask and moves the flask over the burner before heating. The cup becomes empty and reaction effects appear at the flask. Reset starts a fresh experiment after this transfer.
 - Plamenik / Bunsen burner: heats the round-bottom flask and shows a flame when active.
 - Shelf jars: contain the available substances: Kiselina, Baza, Bakar sulfat, and Karbonat.
 
@@ -43,13 +43,17 @@ The same actions are also available from the in-scene control panel.
 
 Use this sequence for the simulation to make sense:
 
-1. Select a substance from the shelf.
-2. Press Meri. The scale measures it and a sample appears in the test tube.
-3. Press Dodaj. The sample moves from the test tube into the glassware.
+1. Select a substance from the shelf. Wait for the jar to fill the test tube and return.
+2. Press Meri. The filled tube moves to the scale for measurement.
+3. Press Dodaj. The tube pours into the cup and returns to its starting position.
 4. Repeat steps 1 to 3 for a second substance.
-5. Press Mesaj. The reaction happens in the glassware.
+5. Press Mesaj. The cup swirls, then the reaction happens in the glassware.
 6. Press Zagrej if you want to heat the prepared solution in the round-bottom flask.
 7. Press Reset to start again.
+
+After weighing, adjust the sample with the scale's + / - buttons before pressing Dodaj. These controls support mouse and VR gaze. Tube fill level and blended cup color reflect the chosen amount; other reactions receive gram quantities in the LLM request. The built-in reaction demonstrations still use substance presence, and liquid levels are illustrative rather than density-based volume calculations.
+
+Wait for each movement to finish before the next action. Reset can interrupt any movement and returns all equipment to its starting position. The same sequences work with keyboard, mouse, and VR gaze. The original preset measurements and simplified reaction rules are retained; heating runs those rules after the animated transfer, rather than modeling temperature-dependent chemistry.
 
 ## Example experiments
 
