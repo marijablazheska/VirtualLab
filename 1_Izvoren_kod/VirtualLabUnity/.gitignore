@@ -1,0 +1,13 @@
+gemini_key.txt
+gemini_key.txt
+openai_key.txt
+Library/
+Temp/
+Logs/
+obj/
+Build/
+Builds/
+UserSettings/
+*.csproj
+*.sln
+.DS_Store

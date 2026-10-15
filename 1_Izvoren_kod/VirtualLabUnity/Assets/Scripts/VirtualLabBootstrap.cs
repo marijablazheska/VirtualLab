@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class VirtualLabBootstrap : MonoBehaviour
@@ -10,13 +12,15 @@ public class VirtualLabBootstrap : MonoBehaviour
     private Renderer beakerLiquidRenderer;
     private Renderer tubeLiquidRenderer;
     private Renderer flaskLiquidRenderer;
+    private Renderer precipitateRenderer;
     private Renderer scaleRenderer;
     private TextMesh selectedText;
     private TextMesh logText;
     private TextMesh temperatureText;
     private TextMesh scaleText;
-    private ParticleSystem smoke;
-    private ParticleSystem bubbles;
+    private ParticleSystem smoke;      // gas inside the beaker
+    private ParticleSystem bubbles;    // bubbles inside the beaker
+    private ParticleSystem heatSmoke;  // vapour in the flask neck
     private GameObject flame;
     private AudioSource audioSource;
     private Camera mainCamera;
@@ -27,6 +31,17 @@ public class VirtualLabBootstrap : MonoBehaviour
     private float temperature = 22f;
     private Color currentLiquidColor = new Color(.25f, .68f, .93f, .72f);
     private bool burnerOn;
+    private LlmReactionService llm;
+    private bool reacting;
+
+    // Short chemistry hints sent to the LLM (the jar names alone are ambiguous)
+    private readonly Dictionary<string, string> chem = new Dictionary<string, string>
+    {
+        {"acid", "Kiselina (acid, HCl)"},
+        {"base", "Baza (base, NaOH)"},
+        {"copper", "Bakar sulfat (CuSO4)"},
+        {"carbonate", "Karbonat (Na2CO3)"}
+    };
 
     private struct Substance
     {
@@ -50,6 +65,8 @@ public class VirtualLabBootstrap : MonoBehaviour
         substances["carbonate"] = new Substance("Karbonat", Color.white, 6.1f);
 
         audioSource = gameObject.AddComponent<AudioSource>();
+        llm = gameObject.AddComponent<LlmReactionService>();
+        llm.ApiKey = LoadApiKey();
         BuildScene();
         BuildPanel();
         SetupVrMode();
@@ -75,6 +92,12 @@ public class VirtualLabBootstrap : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U)) DeviceSignal();
         if (Input.GetKeyDown(KeyCode.R)) ResetExperiment();
         if (Input.GetKeyDown(KeyCode.V)) ToggleVrMode();
+
+        // Quick-test keys: fill the beaker in one press, then press X to mix
+        if (Input.GetKeyDown(KeyCode.F1)) QuickFill("copper", "carbonate"); // LLM
+        if (Input.GetKeyDown(KeyCode.F2)) QuickFill("acid", "copper");      // LLM
+        if (Input.GetKeyDown(KeyCode.F3)) QuickFill("base", "carbonate");   // LLM
+        if (Input.GetKeyDown(KeyCode.F4)) QuickFill("acid", "base");        // static
     }
 
     private void BuildScene()
@@ -106,9 +129,12 @@ public class VirtualLabBootstrap : MonoBehaviour
 
         liquidMaterial = NewMaterial(new Color(.25f, .68f, .93f, .72f));
 
-        CreateBeaker(new Vector3(-1.65f, 1.25f, -.2f));
+        Vector3 beakerPos = new Vector3(-1.65f, 1.25f, -.2f);
+        Vector3 flaskPos = new Vector3(1.05f, 1.27f, -.15f);
+
+        CreateBeaker(beakerPos);
         CreateTestTube(new Vector3(-.25f, 1.32f, -.18f));
-        CreateFlask(new Vector3(1.05f, 1.27f, -.15f));
+        CreateFlask(flaskPos);
         CreateBurner(new Vector3(2.35f, 1.02f, -.25f));
         CreateScale(new Vector3(-2.95f, 1.08f, -.28f));
 
@@ -117,10 +143,25 @@ public class VirtualLabBootstrap : MonoBehaviour
         CreateSubstanceJar("copper", new Vector3(-.9f, 3.35f, 2.05f));
         CreateSubstanceJar("carbonate", new Vector3(-.05f, 3.35f, 2.05f));
 
-        smoke = CreateParticle("Smoke", new Vector3(1.9f, 1.95f, -.25f), new Color(.82f, .86f, .88f, .55f), 1.2f, .25f);
-        bubbles = CreateParticle("Bubbles", new Vector3(-1.65f, 1.55f, -.2f), new Color(.9f, .97f, 1f, .75f), .45f, .08f);
+        // Beaker: radius ~0.275, glass spans y 0.53-1.97, liquid spans y 0.85-1.29.
+        // Particles are placed in WORLD space (not parented to the scaled glass,
+        // because the glass has non-uniform scale which would distort them).
+
+        // Bubbles: start at the bottom of the liquid, rise ~0.4 and die at the surface
+        bubbles = CreateParticle("Bubbles", beakerPos + new Vector3(0f, -.35f, 0f),
+            new Color(.9f, .97f, 1f, .8f), .035f, .3f, .17f, 1.3f, 25f);
+
+        // Gas/smoke: starts at the liquid surface, stays below the rim
+        smoke = CreateParticle("Smoke", beakerPos + new Vector3(0f, .05f, 0f),
+            new Color(.82f, .86f, .88f, .45f), .12f, .12f, .15f, 1.5f, 8f);
+
+        // Flask vapour: inside the flask neck (neck radius ~0.09)
+        heatSmoke = CreateParticle("HeatSmoke", flaskPos + new Vector3(0f, .6f, 0f),
+            new Color(.82f, .86f, .88f, .45f), .06f, .15f, .06f, 1.2f, 8f);
+
         smoke.Stop();
         bubbles.Stop();
+        heatSmoke.Stop();
     }
 
     private void BuildPanel()
@@ -180,6 +221,8 @@ public class VirtualLabBootstrap : MonoBehaviour
         glass.transform.localScale = new Vector3(.55f, .72f, .55f);
         glass.GetComponent<Renderer>().material = NewGlassMaterial(new Color(.8f, .95f, 1f, .24f));
         beakerLiquidRenderer = CreateLiquid("Beaker Liquid", pos + new Vector3(0f, -.18f, -.03f), new Vector3(.47f, .22f, .47f));
+        // Thin solid layer at the bottom of the liquid (blue precipitate)
+        precipitateRenderer = CreateLiquid("Beaker Precipitate", pos + new Vector3(0f, -.37f, -.03f), new Vector3(.46f, .035f, .46f));
         AddLabel("casa", pos + Vector3.up * .95f);
     }
 
@@ -298,21 +341,39 @@ public class VirtualLabBootstrap : MonoBehaviour
         return mesh;
     }
 
-    private ParticleSystem CreateParticle(string name, Vector3 pos, Color color, float size, float speed)
+    // Emits upward from a world position, sized to fit inside the glass.
+    private ParticleSystem CreateParticle(string name, Vector3 worldPos, Color color,
+        float size, float speed, float radius, float lifetime, float rate)
     {
         var obj = new GameObject(name);
-        obj.transform.position = pos;
+        obj.transform.position = worldPos;
+        obj.transform.rotation = Quaternion.Euler(-90f, 0f, 0f); // shape cone points up
+
         var ps = obj.AddComponent<ParticleSystem>();
+        ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
         var main = ps.main;
+        main.simulationSpace = ParticleSystemSimulationSpace.World;
+        main.loop = true;
         main.startColor = color;
         main.startSize = size;
         main.startSpeed = speed;
-        main.startLifetime = 1.4f;
+        main.startLifetime = lifetime;
+
         var emission = ps.emission;
-        emission.rateOverTime = 18f;
+        emission.rateOverTime = rate;
+
         var shape = ps.shape;
         shape.shapeType = ParticleSystemShapeType.Cone;
-        shape.angle = 18f;
+        shape.angle = 3f;
+        shape.radius = radius;
+
+        // Fixes magenta: Sprites/Default works in both Built-in and URP
+        var r = obj.GetComponent<ParticleSystemRenderer>();
+        var shader = Shader.Find("Sprites/Default");
+        if (shader == null) shader = Shader.Find("Universal Render Pipeline/Particles/Unlit");
+        r.material = new Material(shader);
+
         return ps;
     }
 
@@ -389,6 +450,18 @@ public class VirtualLabBootstrap : MonoBehaviour
         Beep(420f, .12f);
     }
 
+    // Reads the key from gemini_key.txt in the project root (add it to .gitignore!)
+    private string LoadApiKey()
+    {
+        try
+        {
+            string path = Path.Combine(Application.dataPath, "..", "gemini_key.txt");
+            if (File.Exists(path)) return File.ReadAllText(path).Trim();
+        }
+        catch (System.Exception) { }
+        return "";
+    }
+
     private void Mix()
     {
         if (vessel.Count < 2)
@@ -396,7 +469,24 @@ public class VirtualLabBootstrap : MonoBehaviour
             Log("Za reakcija se potrebni najmalku dve supstancii vo sadot.");
             return;
         }
+        if (reacting) return;
 
+        // 1) the three known reactions stay static (instant, always correct)
+        if (TryStaticReaction()) return;
+
+        // 2) anything else goes to the LLM
+        StartCoroutine(MixWithLlm());
+    }
+
+    private void ClearReactionEffects()
+    {
+        smoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        bubbles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        if (precipitateRenderer != null) precipitateRenderer.enabled = false;
+    }
+
+    private bool TryStaticReaction()
+    {
         bool hasAcid = vessel.Contains("acid");
         bool hasBase = vessel.Contains("base");
         bool hasCopper = vessel.Contains("copper");
@@ -404,29 +494,88 @@ public class VirtualLabBootstrap : MonoBehaviour
 
         if (hasAcid && hasBase)
         {
+            ClearReactionEffects();
             UpdateBeakerLiquid(new Color(.60f, .90f, .70f, .8f));
-            Log("Vo casa se slucuva neutralizacija: rastvorot menuva boja vo svetlo zelena.");
-            Beep(620f, .12f);
+            Log("neutralizacija. Rastvorot menuva boja vo svetlo zelena i se slusa zvucen efekt.");
+            Beep(660f, .25f);
+            Beep(880f, .25f);
+            return true;
         }
-        else if (hasAcid && hasCarbonate)
+        if (hasAcid && hasCarbonate)
         {
+            ClearReactionEffects();
+            bubbles.Play();
             smoke.Play();
-            bubbles.Play();
-            Log("Vo casa: kiselina + karbonat osloboduva gas, meurcinja i cad.");
-            Beep(190f, .18f);
+            Log("osloboduvanje gas. Se pojavuvaat meurcinja/cad i se slusa reakcija.");
+            PlayFizz(1.4f);
+            return true;
         }
-        else if (hasCopper && hasBase)
+        if (hasCopper && hasBase)
         {
-            UpdateBeakerLiquid(new Color(.08f, .75f, .95f, .8f));
-            bubbles.Play();
-            Log("Vo casa: bakar sulfat + baza formira sin talog.");
-            Beep(520f, .12f);
+            ClearReactionEffects();
+            UpdateBeakerLiquid(new Color(.03f, .28f, .95f, .88f));
+            if (precipitateRenderer != null)
+            {
+                precipitateRenderer.enabled = true;
+                precipitateRenderer.material.color = new Color(.02f, .12f, .65f, 1f);
+            }
+            Log("formiranje sin talog. Rastvorot dobiva posilna sina boja i se slusa zvucen efekt.");
+            Beep(330f, .25f);
+            Beep(495f, .25f);
+            return true;
+        }
+        return false;
+    }
+
+    private IEnumerator MixWithLlm()
+    {
+        reacting = true;
+
+        if (string.IsNullOrEmpty(llm.ApiKey))
+        {
+            Log("Nepoznata reakcija, a nema API kluc (gemini_key.txt). Mala promena na boja.");
+            Beep(440f, .1f);
+            reacting = false;
+            yield break;
+        }
+
+        Log("Se presmetuva reakcijata...");
+        var names = new List<string>();
+        foreach (var k in vessel) names.Add(chem[k]);
+
+        ReactionResult res = null;
+        yield return llm.GetReaction(names, r => res = r);
+
+        if (res == null)
+        {
+            Log("Greska od LLM: " + llm.LastError);
+            Beep(440f, .1f);
         }
         else
         {
-            Log("Casa se koristi za mesanje. Se gleda mala promena na boja.");
-            Beep(440f, .1f);
+            ApplyReaction(res);
         }
+        reacting = false;
+    }
+
+    private void ApplyReaction(ReactionResult r)
+    {
+        ClearReactionEffects();
+        UpdateBeakerLiquid(new Color(r.liquid_color[0], r.liquid_color[1], r.liquid_color[2], r.liquid_color[3]));
+        if (r.gas) { bubbles.Play(); smoke.Play(); }
+        if (r.precipitate)
+        {
+            precipitateRenderer.enabled = true;
+            precipitateRenderer.material.color = new Color(r.precipitate_color[0], r.precipitate_color[1], r.precipitate_color[2], 1f);
+        }
+        temperature = Mathf.Clamp(temperature + r.temperature_change, 0f, 95f);
+        UpdateTemperature();
+
+        if (r.sound == "chime") { Beep(660f, .25f); Beep(880f, .25f); }
+        else if (r.sound == "fizz") PlayFizz(1.4f);
+        else if (r.sound == "low") { Beep(330f, .25f); Beep(495f, .25f); }
+
+        Log(r.description);
     }
 
     private void ToggleHeat()
@@ -445,14 +594,23 @@ public class VirtualLabBootstrap : MonoBehaviour
             temperature = Mathf.Max(temperature, 55f);
             UpdateTemperature();
             Log("Rastvorot od casa e prenesen vo kolba. Plamenikot ja zagreva kolbata.");
-            smoke.Play();
+            heatSmoke.Play();
             Beep(240f, .16f);
         }
         else
         {
+            heatSmoke.Stop();
             Log("Plamenikot e isklucen. Kolbata prestanuva da se zagreva.");
             Beep(180f, .08f);
         }
+    }
+
+    private void QuickFill(params string[] keys)
+    {
+        ResetExperiment();
+        foreach (var k in keys) vessel.Add(k);
+        UpdateBeakerLiquid(MixColors());
+        Log("Test: dodadeni se " + string.Join(" + ", keys) + ". Pritisni X za mesanje.");
     }
 
     private void DeviceSignal()
@@ -470,8 +628,9 @@ public class VirtualLabBootstrap : MonoBehaviour
         temperature = 22f;
         burnerOn = false;
         flame.SetActive(false);
-        smoke.Stop();
-        bubbles.Stop();
+        smoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        bubbles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        heatSmoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         UpdateTemperature();
         ClearLiquids();
         selectedText.text = "Nema izbrana supstancija.";
@@ -555,6 +714,22 @@ public class VirtualLabBootstrap : MonoBehaviour
     private void Beep(float frequency, float duration)
     {
         audioSource.PlayOneShot(CreateTone(frequency, Mathf.Max(duration, .22f)), .75f);
+    }
+
+    private void PlayFizz(float duration)
+    {
+        int sampleRate = 44100;
+        int sampleCount = Mathf.CeilToInt(sampleRate * duration);
+        var data = new float[sampleCount];
+        for (int i = 0; i < sampleCount; i++)
+        {
+            float t = (float)i / sampleCount;
+            float envelope = Mathf.Clamp01(t * 12f) * (1f - t);
+            data[i] = (Random.value * 2f - 1f) * .45f * envelope;
+        }
+        var clip = AudioClip.Create("fizz", sampleCount, 1, sampleRate, false);
+        clip.SetData(data, 0);
+        audioSource.PlayOneShot(clip, .8f);
     }
 
     private AudioClip CreateTone(float frequency, float duration)
