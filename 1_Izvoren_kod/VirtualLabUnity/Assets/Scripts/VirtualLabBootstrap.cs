@@ -9,6 +9,9 @@ public class VirtualLabBootstrap : MonoBehaviour
     private readonly Dictionary<string, float> vesselAmounts = new Dictionary<string, float>();
     private readonly Dictionary<string, Substance> substances = new Dictionary<string, Substance>();
     private readonly List<Renderer> liquidRenderers = new List<Renderer>();
+    private readonly List<Renderer> beakerLayers = new List<Renderer>();
+    private readonly List<Color> layerColors = new List<Color>();
+    private readonly List<float> layerAmounts = new List<float>();
     private Material liquidMaterial;
     private Renderer beakerLiquidRenderer;
     private Renderer tubeLiquidRenderer;
@@ -25,6 +28,7 @@ public class VirtualLabBootstrap : MonoBehaviour
     private ParticleSystem heatSmoke;  // vapour in the flask neck
     private GameObject flame;
     private AudioSource audioSource;
+    private AudioSource reactionAudioSource;
     private Camera mainCamera;
     private VrGazeController vrController;
     private string selectedKey;
@@ -77,6 +81,10 @@ public class VirtualLabBootstrap : MonoBehaviour
         substances["carbonate"] = new Substance("Karbonat", Color.white, 6.1f);
 
         audioSource = gameObject.AddComponent<AudioSource>();
+        reactionAudioSource = gameObject.AddComponent<AudioSource>();
+        reactionAudioSource.playOnAwake = false;
+        reactionAudioSource.loop = false;
+        reactionAudioSource.volume = .3f;
         llm = gameObject.AddComponent<LlmReactionService>();
         llm.ApiKey = LoadApiKey();
         BuildScene();
@@ -546,7 +554,7 @@ public class VirtualLabBootstrap : MonoBehaviour
         vessel.Add(tubeSampleKey);
         if (!vesselAmounts.ContainsKey(tubeSampleKey)) vesselAmounts[tubeSampleKey] = 0f;
         vesselAmounts[tubeSampleKey] += measuredGrams;
-        UpdateBeakerLiquid(MixColors());
+        AddBeakerLayer(substances[tubeSampleKey].Color, measuredGrams);
         string addedName = substances[tubeSampleKey].Name;
         float addedGrams = measuredGrams;
         ClearTubeSample();
@@ -585,6 +593,7 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private IEnumerator MixAnimated()
     {
+        StopReactionSound();
         animating = true;
         Transform container = inFlask ? flaskRig : beakerRig;
         Vector3 home = container.position;
@@ -594,6 +603,7 @@ public class VirtualLabBootstrap : MonoBehaviour
             yield return MoveEquipment(container, home - new Vector3(.08f, -.07f, 0f), Quaternion.Euler(0f, 0f, 8f), .15f);
         }
         yield return MoveEquipment(container, home, Quaternion.identity, .2f);
+        UpdateBeakerLiquid(MixColors());
         animating = false;
         if (!TryStaticReaction()) yield return MixWithLlm();
     }
@@ -603,6 +613,7 @@ public class VirtualLabBootstrap : MonoBehaviour
         smoke.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         bubbles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         if (precipitateRenderer != null) precipitateRenderer.enabled = false;
+        LayoutReactionLayers();
     }
 
     private bool TryStaticReaction()
@@ -617,8 +628,7 @@ public class VirtualLabBootstrap : MonoBehaviour
             ClearReactionEffects();
             UpdateBeakerLiquid(new Color(.60f, .90f, .70f, .8f));
             Log("neutralizacija. Rastvorot menuva boja vo svetlo zelena i se slusa zvucen efekt.");
-            Beep(660f, .25f);
-            Beep(880f, .25f);
+            PlayReactionSound("chime");
             return true;
         }
         if (hasAcid && hasCarbonate)
@@ -627,21 +637,16 @@ public class VirtualLabBootstrap : MonoBehaviour
             bubbles.Play();
             smoke.Play();
             Log("osloboduvanje gas. Se pojavuvaat meurcinja/cad i se slusa reakcija.");
-            PlayFizz(1.4f);
+            PlayReactionSound("fizz");
             return true;
         }
         if (hasCopper && hasBase)
         {
             ClearReactionEffects();
             UpdateBeakerLiquid(new Color(.03f, .28f, .95f, .88f));
-            if (precipitateRenderer != null)
-            {
-                precipitateRenderer.enabled = true;
-                precipitateRenderer.material.color = new Color(.02f, .12f, .65f, 1f);
-            }
+            ShowPrecipitate(new Color(.02f, .12f, .65f, 1f));
             Log("formiranje sin talog. Rastvorot dobiva posilna sina boja i se slusa zvucen efekt.");
-            Beep(330f, .25f);
-            Beep(495f, .25f);
+            PlayReactionSound("low");
             return true;
         }
         return false;
@@ -686,15 +691,12 @@ public class VirtualLabBootstrap : MonoBehaviour
         if (r.gas) { bubbles.Play(); smoke.Play(); }
         if (r.precipitate)
         {
-            precipitateRenderer.enabled = true;
-            precipitateRenderer.material.color = new Color(r.precipitate_color[0], r.precipitate_color[1], r.precipitate_color[2], 1f);
+            ShowPrecipitate(new Color(r.precipitate_color[0], r.precipitate_color[1], r.precipitate_color[2], 1f));
         }
         temperature = Mathf.Clamp(temperature + r.temperature_change, 0f, 95f);
         UpdateTemperature();
 
-        if (r.sound == "chime") { Beep(660f, .25f); Beep(880f, .25f); }
-        else if (r.sound == "fizz") PlayFizz(1.4f);
-        else if (r.sound == "low") { Beep(330f, .25f); Beep(495f, .25f); }
+        PlayReactionSound(r.sound);
 
         Log(r.description);
     }
@@ -777,8 +779,9 @@ public class VirtualLabBootstrap : MonoBehaviour
         yield return MoveEquipment(beakerRig, flaskHome + new Vector3(.75f, 1.5f, 0f), Quaternion.Euler(0f, 0f, 100f));
         yield return PourAnimation(beakerRig, new Vector3(0f, .72f, 0f), flaskRig, new Vector3(0f, .9f, 0f), currentLiquidColor);
         beakerLiquidRenderer.enabled = false;
-        UpdateFlaskLiquid(currentLiquidColor);
         inFlask = true;
+        UpdateFlaskLiquid(currentLiquidColor);
+        HideBeakerLayers();
         yield return MoveEquipment(beakerRig, beakerHome, Quaternion.identity);
         yield return MoveEquipment(flaskRig, new Vector3(2.35f, 2.2f, -.25f), Quaternion.identity);
         smoke.transform.position = flaskRig.position + new Vector3(0f, .45f, 0f);
@@ -800,8 +803,8 @@ public class VirtualLabBootstrap : MonoBehaviour
             vessel.Add(k);
             if (!vesselAmounts.ContainsKey(k)) vesselAmounts[k] = 0f;
             vesselAmounts[k] += substances[k].Grams;
+            AddBeakerLayer(substances[k].Color, substances[k].Grams);
         }
-        UpdateBeakerLiquid(MixColors());
         Log("Test: dodadeni se " + string.Join(" + ", keys) + ". Pritisni X za mesanje.");
     }
 
@@ -813,6 +816,7 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void ResetExperiment()
     {
+        StopReactionSound();
         StopAllCoroutines();
         animating = false;
         reacting = false;
@@ -861,10 +865,93 @@ public class VirtualLabBootstrap : MonoBehaviour
         return color;
     }
 
+    private void HideBeakerLayers()
+    {
+        foreach (var layer in beakerLayers) layer.enabled = false;
+    }
+
+    private void AddBeakerLayer(Color color, float grams)
+    {
+        if (grams <= 0f) return;
+        layerColors.Add(color);
+        layerAmounts.Add(grams);
+        currentLiquidColor = MixColors();
+        beakerLiquidRenderer.enabled = false;
+        HideBeakerLayers();
+
+        float total = 0f;
+        foreach (var amount in layerAmounts) total += amount;
+        float residueHeight = precipitateRenderer.enabled ? .10f : 0f;
+        float bottom = -.40f + residueHeight;
+        for (int i = 0; i < layerColors.Count; i++)
+        {
+            if (i >= beakerLayers.Count)
+            {
+                var layer = CreateLiquid("Unmixed Layer " + i, Vector3.zero, Vector3.one);
+                layer.transform.SetParent(beakerRig, false);
+                // Layers are visual only; they must not obstruct equipment interaction.
+                Destroy(layer.GetComponent<Collider>());
+                beakerLayers.Add(layer);
+            }
+            float height = (.44f - residueHeight) * layerAmounts[i] / total;
+            var renderer = beakerLayers[i];
+            renderer.transform.localPosition = new Vector3(0f, bottom + height * .5f, -.03f);
+            renderer.transform.localScale = new Vector3(.47f, height * .5f, .47f);
+            Color layerColor = layerColors[i];
+            layerColor.a = .88f;
+            renderer.material.color = layerColor;
+            renderer.enabled = true;
+            bottom += height;
+        }
+    }
+
+    private void ShowPrecipitate(Color color)
+    {
+        color.a = 1f;
+        precipitateRenderer.material.color = color;
+        precipitateRenderer.enabled = true;
+        LayoutReactionLayers();
+    }
+
+    private void LayoutReactionLayers()
+    {
+        // Unity's cylinder is two units tall: Y scale is half the layer height.
+        bool hasResidue = precipitateRenderer != null && precipitateRenderer.enabled;
+        float bottom = inFlask ? -.34f : -.40f;
+        float totalHeight = inFlask ? .32f : .44f;
+        float residueHeight = hasResidue ? (inFlask ? .08f : .10f) : 0f;
+        var liquid = inFlask ? flaskLiquidRenderer : beakerLiquidRenderer;
+        if (liquid != null)
+        {
+            float height = totalHeight - residueHeight;
+            liquid.transform.localPosition = new Vector3(0f, bottom + residueHeight + height * .5f, -.03f);
+            float width = inFlask ? .48f : .47f;
+            liquid.transform.localScale = new Vector3(width, height * .5f, width);
+        }
+        if (hasResidue)
+        {
+            precipitateRenderer.transform.SetParent(inFlask ? flaskRig : beakerRig, false);
+            precipitateRenderer.transform.localPosition = new Vector3(0f, bottom + residueHeight * .5f, -.03f);
+            float width = inFlask ? .46f : .47f;
+            precipitateRenderer.transform.localScale = new Vector3(width, residueHeight * .5f, width);
+        }
+    }
+
     private void UpdateBeakerLiquid(Color color)
     {
+        HideBeakerLayers();
+        layerColors.Clear();
+        layerAmounts.Clear();
+        float total = 0f;
+        foreach (var amount in vesselAmounts.Values) total += amount;
+        if (total > 0f)
+        {
+            layerColors.Add(color);
+            layerAmounts.Add(total);
+        }
         currentLiquidColor = color;
         liquidMaterial.color = color;
+        LayoutReactionLayers();
         if (inFlask) { UpdateFlaskLiquid(color); return; }
         if (beakerLiquidRenderer != null)
         {
@@ -896,6 +983,7 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void UpdateFlaskLiquid(Color color)
     {
+        LayoutReactionLayers();
         if (flaskLiquidRenderer != null)
         {
             flaskLiquidRenderer.enabled = true;
@@ -905,6 +993,11 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void ClearLiquids()
     {
+        if (precipitateRenderer != null) precipitateRenderer.enabled = false;
+        LayoutReactionLayers();
+        HideBeakerLayers();
+        layerColors.Clear();
+        layerAmounts.Clear();
         currentLiquidColor = new Color(.25f, .68f, .93f, .72f);
         liquidMaterial.color = currentLiquidColor;
         foreach (var renderer in liquidRenderers)
@@ -961,20 +1054,45 @@ public class VirtualLabBootstrap : MonoBehaviour
         audioSource.PlayOneShot(CreateTone(frequency, Mathf.Max(duration, .22f)), .75f);
     }
 
-    private void PlayFizz(float duration)
+    private void StopReactionSound()
     {
+        reactionAudioSource.Stop();
+        if (reactionAudioSource.clip != null)
+        {
+            Destroy(reactionAudioSource.clip);
+            reactionAudioSource.clip = null;
+        }
+    }
+
+    private void PlayReactionSound(string sound)
+    {
+        StopReactionSound();
+        if (sound != "chime" && sound != "low" && sound != "fizz") return;
+
+        // Play once, with a smooth fade at both ends.
+        const float duration = 3f;
         int sampleRate = 44100;
         int sampleCount = Mathf.CeilToInt(sampleRate * duration);
         var data = new float[sampleCount];
         for (int i = 0; i < sampleCount; i++)
         {
-            float t = (float)i / sampleCount;
-            float envelope = Mathf.Clamp01(t * 12f) * (1f - t);
-            data[i] = (Random.value * 2f - 1f) * .45f * envelope;
+            float seconds = (float)i / sampleRate;
+            float envelope = Mathf.Sin(Mathf.PI * seconds / duration);
+            envelope *= envelope;
+            if (sound == "fizz")
+                data[i] = (Random.value * 2f - 1f) * .45f * envelope;
+            else
+            {
+                float frequency = sound == "chime" ? 660f : 330f;
+                float harmony = sound == "chime" ? 880f : 495f;
+                data[i] = (Mathf.Sin(2f * Mathf.PI * frequency * seconds)
+                    + Mathf.Sin(2f * Mathf.PI * harmony * seconds)) * .25f * envelope;
+            }
         }
-        var clip = AudioClip.Create("fizz", sampleCount, 1, sampleRate, false);
+        var clip = AudioClip.Create("reaction_" + sound, sampleCount, 1, sampleRate, false);
         clip.SetData(data, 0);
-        audioSource.PlayOneShot(clip, .8f);
+        reactionAudioSource.clip = clip;
+        reactionAudioSource.Play();
     }
 
     private AudioClip CreateTone(float frequency, float duration)
@@ -1031,6 +1149,8 @@ public class VrGazeController : MonoBehaviour
 
     private const float EyeDistance = 0.064f;
     private const float GazeSeconds = 1.15f;
+    // The starting camera is about ten units from the jars and action panel.
+    private const float GazeDistance = 20f;
     private Camera leftCamera;
     private Camera rightCamera;
     private GameObject rig;
@@ -1142,7 +1262,7 @@ public class VrGazeController : MonoBehaviour
     private void UpdateGazeSelection()
     {
         Ray ray = new Ray(leftCamera.transform.position, leftCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, 8f))
+        if (Physics.Raycast(ray, out RaycastHit hit, GazeDistance))
         {
             reticle.transform.position = hit.point - ray.direction * .035f;
             reticle.transform.rotation = Quaternion.LookRotation(ray.direction);
