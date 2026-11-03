@@ -217,17 +217,54 @@ public class VirtualLabBootstrap : MonoBehaviour
         logText = AddPanelText("", new Vector3(1.35f, 1.52f, 2.60f), .030f, FontStyle.Bold);
     }
 
-    private void SetupVrMode()
-    {
-        vrController = gameObject.AddComponent<VrGazeController>();
-        vrController.Configure(mainCamera);
-        bool startInVr = Application.isMobilePlatform;
-        vrController.SetVrEnabled(startInVr);
-        if (startInVr)
+        private void SetupVrMode()
         {
-            Log("VR 3D Box rezim e vklucen. Gledaj vo objekt za izbor.");
+            vrController = gameObject.AddComponent<VrGazeController>();
+
+            // Pravi headset (Quest) preku OpenXR
+            if (UnityEngine.XR.XRSettings.isDeviceActive)
+            {
+                SetupHeadset();
+                vrController.ConfigureHeadset(mainCamera);
+                Log("Quest rezim. Gledaj vo objekt za izbor.");
+                return;
+            }
+
+            // Cardboard / desktop rezim, isto kako prethodno
+            vrController.Configure(mainCamera);
+            bool startInVr = Application.isMobilePlatform;
+            vrController.SetVrEnabled(startInVr);
+            if (startInVr)
+            {
+                Log("VR 3D Box rezim e vklucen. Gledaj vo objekt za izbor.");
+            }
         }
-    }
+
+        private void SetupHeadset()
+        {
+            // Rig na podot pred masata; visinata ja dava headset-ot
+            var rig = new GameObject("XR Rig").transform;
+            rig.position = new Vector3(0f, 0f, -3f);
+            mainCamera.transform.SetParent(rig, false);
+            mainCamera.transform.localPosition = new Vector3(0f, 1.6f, 0f);
+            mainCamera.transform.localRotation = Quaternion.identity;
+            mainCamera.nearClipPlane = .05f;
+
+            // Floor tracking za realna visina na glavata
+            var subsystems = new List<UnityEngine.XR.XRInputSubsystem>();
+            SubsystemManager.GetSubsystems(subsystems);
+            foreach (var s in subsystems)
+                s.TrySetTrackingOriginMode(UnityEngine.XR.TrackingOriginModeFlags.Floor);
+
+            // Head tracking
+            var tpd = mainCamera.gameObject.AddComponent<UnityEngine.InputSystem.XR.TrackedPoseDriver>();
+            var pos = new UnityEngine.InputSystem.InputAction(binding: "<XRHMD>/centerEyePosition");
+            var rot = new UnityEngine.InputSystem.InputAction(binding: "<XRHMD>/centerEyeRotation");
+            pos.Enable();
+            rot.Enable();
+            tpd.positionInput = new UnityEngine.InputSystem.InputActionProperty(pos);
+            tpd.rotationInput = new UnityEngine.InputSystem.InputActionProperty(rot);
+        }
 
     private void ToggleVrMode()
     {
@@ -1163,7 +1200,17 @@ public class VrGazeController : MonoBehaviour
     private bool gyroAvailable;
     private float mouseYaw;
     private float mousePitch;
+    private bool headsetMode;
 
+
+    public void ConfigureHeadset(Camera cam)
+        {
+            headsetMode = true;
+            leftCamera = cam;
+            BuildReticle();
+            IsVrEnabled = true;
+            reticle.SetActive(true);
+        }
     public void Configure(Camera sourceCamera)
     {
         leftCamera = sourceCamera;
@@ -1180,6 +1227,8 @@ public class VrGazeController : MonoBehaviour
 
     public void SetVrEnabled(bool enabled)
     {
+
+        if (headsetMode) return;
         IsVrEnabled = enabled;
         if (rig == null || rightCamera == null) return;
 
@@ -1210,10 +1259,9 @@ public class VrGazeController : MonoBehaviour
     private void Update()
     {
         if (!IsVrEnabled) return;
-        UpdateHeadRotation();
+        if (!headsetMode) UpdateHeadRotation();
         UpdateGazeSelection();
     }
-
     private void BuildRig()
     {
         rig = new GameObject("Mobile 3D Box VR Rig");
