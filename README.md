@@ -14,6 +14,8 @@ This project is a Unity 3D virtual laboratory for basic experiments with substan
 
 ## Main controls
 
+The lab uses fixed equipment nameplates, a separate framed reaction board on the wall, and a pastel control console on the bench. Changing readings and reaction descriptions fit within bounded text regions; reaction messages wrap instead of extending over equipment or buttons. The scale retains its own gram display and + / - controls. The layout is built in world space for desktop, Cardboard, and Quest interaction.
+
 Keyboard shortcuts:
 
 - 1: select Kiselina / acid
@@ -107,6 +109,14 @@ The application gives feedback through:
 - a result message on the control panel
 
 If sound is not heard, check that the Game view audio is not muted and that the computer volume is on.
+
+## Meta Quest 3 controller selection
+
+When running in a headset through OpenXR, aim either Touch controller's ray at a substance jar or a laboratory action button, then press the index trigger to select it. The ray turns green over a selectable object. Release the trigger before selecting again. The scale's + / - buttons use the same controls.
+
+Gaze dwell selection is suspended while either controller is tracked and resumes when neither controller is tracked. Mouse, keyboard, and mobile Cardboard controls remain available in their existing modes.
+
+The controller-enabled Android build is `2_Izvrshna_verzija/VirtualLabQuest3.apk` (built with Unity 6000.3.17f1). The original `VirtualLabAPK.apk` is unchanged. The Android build profile uses Linear color space and IL2CPP for ARM64. In Android OpenXR settings, keep the Meta Quest Touch Plus and Oculus Touch controller profiles enabled. Headset testing is still required: verify head tracking and both controller rays, then test jar selection, scale adjustment, and each experiment action. Holding the trigger should activate only once; moving a controller out of tracking and back while holding the trigger should not activate a target.
 
 ## Mobile 3D Box VR mode
 

@@ -130,9 +130,10 @@ public class VirtualLabBootstrap : MonoBehaviour
             mainCamera = new GameObject("Main Camera").AddComponent<Camera>();
             mainCamera.tag = "MainCamera";
         }
-        mainCamera.transform.position = new Vector3(0f, 4.2f, -7.2f);
-        mainCamera.transform.rotation = Quaternion.Euler(28f, 0f, 0f);
-        mainCamera.backgroundColor = new Color(.78f, .86f, .92f);
+        mainCamera.transform.position = new Vector3(.65f, 4.4f, -8.8f);
+        mainCamera.transform.rotation = Quaternion.Euler(22f, 0f, 0f);
+        mainCamera.backgroundColor = new Color(.70f, .85f, .95f);
+        RenderSettings.ambientLight = new Color(.66f, .73f, .80f);
         if (mainCamera.GetComponent<AudioListener>() == null)
         {
             mainCamera.gameObject.AddComponent<AudioListener>();
@@ -143,11 +144,13 @@ public class VirtualLabBootstrap : MonoBehaviour
         light.intensity = 1.3f;
         light.transform.rotation = Quaternion.Euler(50f, -35f, 0f);
 
-        CreateCube("Floor", new Vector3(0f, -0.08f, 0f), new Vector3(9f, .12f, 8f), new Color(.78f, .81f, .85f));
-        CreateCube("Back Wall", new Vector3(0f, 2.2f, 2.8f), new Vector3(9f, 4.6f, .16f), new Color(.83f, .89f, .94f));
-        CreateCube("Lab Bench", new Vector3(0f, .75f, .15f), new Vector3(7f, .38f, 2.15f), new Color(.52f, .31f, .16f));
-        CreateCube("Bench Front", new Vector3(0f, .2f, -1f), new Vector3(7.15f, 1f, .26f), new Color(.42f, .24f, .12f));
-        CreateCube("Shelf", new Vector3(-1.2f, 2.95f, 2.15f), new Vector3(4.4f, .12f, .42f), new Color(.38f, .43f, .48f));
+        // Keep the floor surface at ground level, below the bench, with edges outside the normal view.
+        CreateCube("Floor", new Vector3(.5f, -.16f, -2f), new Vector3(30f, .12f, 30f), new Color(.53f, .61f, .66f));
+        CreateCube("Back Wall", new Vector3(.5f, 2.6f, 2.8f), new Vector3(11f, 5.5f, .16f), new Color(.70f, .85f, .95f));
+        CreateCube("Lab Bench", new Vector3(.5f, .75f, .15f), new Vector3(9.2f, .38f, 2.5f), new Color(.76f, .49f, .29f));
+        CreateCube("Bench Front", new Vector3(.5f, .2f, -1.15f), new Vector3(9.25f, 1f, .20f), new Color(.58f, .34f, .20f));
+        // End the shelf before the reaction board, with a visible horizontal gap.
+        CreateCube("Shelf", new Vector3(-1.6f, 2.95f, 2.15f), new Vector3(3.8f, .12f, .42f), new Color(.38f, .43f, .48f));
 
         liquidMaterial = NewMaterial(new Color(.25f, .68f, .93f, .72f));
 
@@ -158,12 +161,13 @@ public class VirtualLabBootstrap : MonoBehaviour
         CreateTestTube(new Vector3(-.25f, 1.32f, -.18f));
         CreateFlask(flaskPos);
         CreateBurner(new Vector3(2.35f, 1.02f, -.25f));
-        CreateScale(new Vector3(-2.95f, 1.08f, -.28f));
+        CreateScale(new Vector3(-2.95f, .94f + .14f, -.28f)); // bench top + half body height
 
-        CreateSubstanceJar("acid", new Vector3(-2.6f, 3.35f, 2.05f));
-        CreateSubstanceJar("base", new Vector3(-1.75f, 3.35f, 2.05f));
-        CreateSubstanceJar("copper", new Vector3(-.9f, 3.35f, 2.05f));
-        CreateSubstanceJar("carbonate", new Vector3(-.05f, 3.35f, 2.05f));
+        float jarY = 2.95f + .06f + .42f; // shelf top + cylinder half height
+        CreateSubstanceJar("acid", new Vector3(-2.6f, jarY, 2.15f));
+        CreateSubstanceJar("base", new Vector3(-1.75f, jarY, 2.15f));
+        CreateSubstanceJar("copper", new Vector3(-.9f, jarY, 2.15f));
+        CreateSubstanceJar("carbonate", new Vector3(-.05f, jarY, 2.15f));
 
         // Beaker: radius ~0.275, glass spans y 0.53-1.97, liquid spans y 0.85-1.29.
         // Particles are placed in WORLD space (not parented to the scaled glass,
@@ -199,22 +203,68 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void BuildPanel()
     {
-        CreateCube("Info Panel", new Vector3(2.35f, 2.75f, 2.68f), new Vector3(2.25f, 2.30f, .08f), new Color(.94f, .97f, 1f));
-        AddPanelText("Virtualna laboratorija", new Vector3(1.35f, 3.75f, 2.60f), .052f, FontStyle.Bold);
-        selectedText = AddPanelText("Nema izbrana supstancija.", new Vector3(1.35f, 3.47f, 2.60f), .034f, FontStyle.Normal);
-        temperatureText = AddPanelText("Temperatura: 22 C", new Vector3(1.35f, 3.23f, 2.60f), .036f, FontStyle.Bold);
-        scaleText = AddPanelText("Vaga: 0.0 g", new Vector3(1.35f, 3.04f, 2.60f), .036f, FontStyle.Bold);
+        var title = AddPanelText("Virtuelna laboratorija", new Vector3(-3.4f, 4.8f, 2.60f), .105f, FontStyle.Bold);
+        FitText(title, 3.7f, .48f);
+        CreateCube("Title Underline", new Vector3(-1.55f, 4.25f, 2.62f), new Vector3(3.7f, .025f, .025f), new Color(.22f, .65f, .88f));
 
-        CreateActionButton("Meri", "measure", new Vector3(1.58f, 2.73f, 2.54f));
-        CreateActionButton("Dodaj", "pour", new Vector3(2.45f, 2.73f, 2.54f));
-        CreateActionButton("Mesaj", "mix", new Vector3(1.58f, 2.46f, 2.54f));
-        CreateActionButton("Zagrej", "heat", new Vector3(2.45f, 2.46f, 2.54f));
-        CreateActionButton("Ured", "device", new Vector3(1.58f, 2.19f, 2.54f));
-        CreateActionButton("Reset", "reset", new Vector3(2.45f, 2.19f, 2.54f));
+        CreateCube("Reaction Board Frame", new Vector3(2.65f, 3.53f, 2.65f), new Vector3(3.95f, 2.02f, .12f), new Color(.57f, .48f, .45f));
+        CreateCube("Reaction Board", new Vector3(2.65f, 3.53f, 2.56f), new Vector3(3.82f, 1.89f, .05f), new Color(.97f, .96f, .94f));
+        var heading = AddPanelText("Tek na reakcijata", new Vector3(2.65f, 4.32f, 2.51f), .075f, FontStyle.Bold);
+        heading.anchor = TextAnchor.UpperCenter;
+        FitText(heading, 3.4f, .32f);
+        CreateCube("Board Divider", new Vector3(2.65f, 3.94f, 2.51f), new Vector3(3.3f, .018f, .015f), new Color(.25f, .67f, .9f));
+        selectedText = AddPanelText("Izberi supstancija za pocetok.", new Vector3(.99f, 3.82f, 2.50f), .043f, FontStyle.Bold);
+        FitText(selectedText, 3.3f, .24f);
+        logText = AddPanelText("", new Vector3(.99f, 3.44f, 2.50f), .055f, FontStyle.Normal);
+        FitText(logText, 3.3f, .70f, true);
 
-        AddPanelText("Supstancii: 1 Kiselina, 2 Baza, 3 CuSO4, 4 Karbonat", new Vector3(1.35f, 1.88f, 2.60f), .024f, FontStyle.Normal);
-        AddPanelText("Kratenci: M/P/X/H/U/R", new Vector3(1.35f, 1.74f, 2.60f), .024f, FontStyle.Normal);
-        logText = AddPanelText("", new Vector3(1.35f, 1.52f, 2.60f), .030f, FontStyle.Bold);
+        var console = new GameObject("Bench Control Console").transform;
+        console.position = new Vector3(3.9f, 1.75f, -.52f);
+        console.rotation = Quaternion.Euler(18f, 0f, 0f);
+        ConsoleBlock(console, "Console Frame", Vector3.zero, new Vector3(1.88f, 1.65f, .12f), new Color(.36f, .41f, .48f));
+        ConsoleBlock(console, "Console Face", new Vector3(0f, 0f, -.08f), new Vector3(1.78f, 1.55f, .05f), new Color(.96f, .94f, .90f));
+        ConsoleText(console, "Kontroli", new Vector3(0f, .62f, -.12f), .06f, 1.5f, .22f);
+        ConsoleBlock(console, "Readings", new Vector3(0f, .31f, -.12f), new Vector3(1.55f, .24f, .025f), new Color(.73f, .87f, .93f));
+        temperatureText = ConsoleText(console, "22 C", new Vector3(-.4f, .31f, -.15f), .039f, .67f, .16f);
+        scaleText = ConsoleText(console, "0.0 g", new Vector3(.4f, .31f, -.15f), .039f, .67f, .16f);
+        ConsoleButton(console, "Meri", "measure", new Vector3(-.41f, -.02f, -.14f), new Color(.65f, .88f, .69f));
+        ConsoleButton(console, "Dodaj", "pour", new Vector3(.41f, -.02f, -.14f), new Color(.61f, .79f, .96f));
+        ConsoleButton(console, "Mesaj", "mix", new Vector3(-.41f, -.32f, -.14f), new Color(.79f, .72f, .93f));
+        ConsoleButton(console, "Zagrej", "heat", new Vector3(.41f, -.32f, -.14f), new Color(.96f, .72f, .68f));
+        ConsoleButton(console, "Ured", "device", new Vector3(-.41f, -.62f, -.14f), new Color(.98f, .87f, .54f));
+        ConsoleButton(console, "Resetiraj", "reset", new Vector3(.41f, -.62f, -.14f), new Color(.79f, .82f, .90f));
+    }
+
+    private GameObject ConsoleBlock(Transform parent, string name, Vector3 position, Vector3 size, Color color)
+    {
+        var block = CreateCube(name, position, size, color);
+        block.transform.SetParent(parent, false);
+        return block;
+    }
+
+    private TextMesh ConsoleText(Transform parent, string text, Vector3 position, float size, float width, float height)
+    {
+        var mesh = AddPanelText(text, position, size, FontStyle.Bold);
+        mesh.transform.SetParent(parent, false);
+        mesh.anchor = TextAnchor.MiddleCenter;
+        mesh.alignment = TextAlignment.Center;
+        FitText(mesh, width, height);
+        return mesh;
+    }
+
+    private void ConsoleButton(Transform parent, string text, string action, Vector3 position, Color color)
+    {
+        var button = ConsoleBlock(parent, "Button " + text, position, new Vector3(.74f, .25f, .06f), color);
+        var clickable = button.AddComponent<LabActionButton>();
+        clickable.Lab = this;
+        clickable.Action = action;
+        ConsoleText(parent, text, position + new Vector3(0f, 0f, -.045f), .045f, .64f, .17f);
+    }
+
+    private void FitText(TextMesh text, float width, float height, bool wrap = false)
+    {
+        var fit = text.gameObject.AddComponent<LabTextBounds>();
+        fit.Configure(width, height, wrap);
     }
 
         private void SetupVrMode()
@@ -226,7 +276,7 @@ public class VirtualLabBootstrap : MonoBehaviour
             {
                 SetupHeadset();
                 vrController.ConfigureHeadset(mainCamera);
-                Log("Quest rezim. Gledaj vo objekt za izbor.");
+                Log("Quest rezim. Nasoci kontroler i pritisni trigger za izbor.");
                 return;
             }
 
@@ -293,7 +343,7 @@ public class VirtualLabBootstrap : MonoBehaviour
         beakerLiquidRenderer = CreateLiquid("Beaker Liquid", pos + new Vector3(0f, -.18f, -.03f), new Vector3(.47f, .22f, .47f));
         // Thin solid layer at the bottom of the liquid (blue precipitate)
         precipitateRenderer = CreateLiquid("Beaker Precipitate", pos + new Vector3(0f, -.37f, -.03f), new Vector3(.46f, .035f, .46f));
-        AddLabel("casa", pos + Vector3.up * .95f);
+        AddLabel("Casa", new Vector3(pos.x, .60f, -1.30f));
     }
 
     private void CreateTestTube(Vector3 pos)
@@ -304,7 +354,7 @@ public class VirtualLabBootstrap : MonoBehaviour
         tube.transform.localScale = new Vector3(.2f, .92f, .2f);
         tube.GetComponent<Renderer>().material = NewGlassMaterial(new Color(.8f, .95f, 1f, .22f));
         tubeLiquidRenderer = CreateLiquid("Tube Liquid", pos + new Vector3(0f, -.34f, -.025f), new Vector3(.17f, .24f, .17f));
-        AddLabel("epruveta", pos + Vector3.up * 1.1f);
+        AddLabel("Epruveta", new Vector3(pos.x, .60f, -1.30f));
     }
 
     private void CreateFlask(Vector3 pos)
@@ -320,7 +370,7 @@ public class VirtualLabBootstrap : MonoBehaviour
         neck.transform.localScale = new Vector3(.18f, .38f, .18f);
         neck.GetComponent<Renderer>().material = body.GetComponent<Renderer>().material;
         flaskLiquidRenderer = CreateLiquid("Flask Liquid", pos + new Vector3(0f, -.18f, -.03f), new Vector3(.48f, .16f, .48f));
-        AddLabel("kolba", pos + Vector3.up * .95f);
+        AddLabel("Kolba", new Vector3(pos.x, .60f, -1.30f));
     }
 
     private Renderer CreateLiquid(string name, Vector3 pos, Vector3 scale)
@@ -350,7 +400,7 @@ public class VirtualLabBootstrap : MonoBehaviour
         flame.transform.localScale = new Vector3(.22f, .48f, .22f);
         flame.GetComponent<Renderer>().material = NewMaterial(new Color(1f, .47f, .08f, .85f));
         flame.SetActive(false);
-        AddLabel("plamenik", pos + Vector3.up * 1.05f);
+        AddLabel("Plamenik", new Vector3(pos.x, .60f, -1.30f));
     }
 
     private void CreateScale(Vector3 pos)
@@ -374,9 +424,10 @@ public class VirtualLabBootstrap : MonoBehaviour
         scaleDisplay.transform.localPosition = new Vector3(-.35f, .075f, -.06f);
         scaleDisplay.fontStyle = FontStyle.Normal;
         scaleDisplay.color = new Color(.08f, .15f, .1f);
+        FitText(scaleDisplay, .52f, .14f);
         CreateScaleButton(controls, "+", "scaleUp", new Vector3(.33f, .075f, -.05f));
         CreateScaleButton(controls, "-", "scaleDown", new Vector3(.33f, -.075f, -.05f));
-        AddLabel("vaga", pos + Vector3.up * .45f);
+        AddLabel("Vaga", new Vector3(pos.x, .60f, -1.30f));
     }
 
     private void CreateScaleButton(Transform controls, string label, string action, Vector3 position)
@@ -405,7 +456,7 @@ public class VirtualLabBootstrap : MonoBehaviour
         var clickable = jar.AddComponent<ClickableSubstance>();
         clickable.Key = key;
         clickable.Lab = this;
-        AddLabel(substances[key].Name, pos + Vector3.up * .65f);
+        AddLabel(substances[key].Name, pos + Vector3.up * .55f);
     }
 
     private void CreateActionButton(string label, string action, Vector3 pos)
@@ -419,15 +470,19 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void AddLabel(string text, Vector3 pos)
     {
+        float width = pos.y > 3f ? .78f : 1.02f;
+        var plate = CreateCube("Nameplate " + text, pos, new Vector3(width, .25f, .04f), new Color(.96f, .92f, .85f));
+        plate.transform.rotation = Quaternion.Euler(22f, 0f, 0f);
         var label = new GameObject("Label " + text);
-        label.transform.position = pos;
+        label.transform.position = pos + plate.transform.rotation * new Vector3(0f, 0f, -.028f);
         var mesh = label.AddComponent<TextMesh>();
         mesh.text = text;
         mesh.fontSize = 40;
-        mesh.characterSize = .045f;
+        mesh.characterSize = .044f;
         mesh.anchor = TextAnchor.MiddleCenter;
         mesh.color = Color.black;
-        label.transform.rotation = Quaternion.Euler(28f, 0f, 0f);
+        label.transform.rotation = plate.transform.rotation;
+        FitText(mesh, width - .1f, .16f);
     }
 
     private TextMesh AddPanelText(string text, Vector3 pos, float size, FontStyle style)
@@ -1049,14 +1104,14 @@ public class VirtualLabBootstrap : MonoBehaviour
 
     private void UpdateTemperature()
     {
-        temperatureText.text = "Temperatura: " + Mathf.RoundToInt(temperature) + " C";
+        temperatureText.text = Mathf.RoundToInt(temperature) + " C";
     }
 
     private void UpdateScaleDisplay()
     {
         string reading = measuredGrams.ToString("0.0") + " g";
         scaleDisplay.text = reading;
-        scaleText.text = "Vaga: " + reading;
+        scaleText.text = reading;
     }
 
     private void AdjustMeasurement(float delta)
@@ -1148,6 +1203,56 @@ public class VirtualLabBootstrap : MonoBehaviour
     }
 }
 
+// All fixed UI regions fit their text locally, independent of camera or VR eye.
+public class LabTextBounds : MonoBehaviour
+{
+    private TextMesh mesh;
+    private Renderer textRenderer;
+    private float width, height, originalSize;
+    private bool wrap;
+    private string lastRendered;
+
+    public void Configure(float maxWidth, float maxHeight, bool wordWrap)
+    {
+        mesh = GetComponent<TextMesh>();
+        textRenderer = GetComponent<Renderer>();
+        originalSize = mesh.characterSize;
+        width = maxWidth;
+        height = maxHeight;
+        wrap = wordWrap;
+    }
+
+    private void LateUpdate()
+    {
+        if (mesh == null || mesh.text == lastRendered) return;
+        string text = mesh.text ?? "";
+        if (wrap)
+        {
+            // Bound external reaction descriptions and errors as well as local messages.
+            if (text.Length > 300) text = text.Substring(0, 297) + "...";
+            var lines = new List<string>();
+            string line = "";
+            foreach (string word in text.Split(new[] { ' ', '\n', '\r', '\t' }, System.StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (line.Length > 0 && line.Length + word.Length + 1 > 46)
+                {
+                    lines.Add(line);
+                    line = "";
+                }
+                line += (line.Length == 0 ? "" : " ") + word;
+            }
+            if (line.Length > 0) lines.Add(line);
+            text = string.Join("\n", lines);
+        }
+        mesh.characterSize = originalSize;
+        mesh.text = text;
+        Vector3 size = textRenderer.localBounds.size;
+        float fit = Mathf.Min(1f, width / Mathf.Max(.001f, size.x), height / Mathf.Max(.001f, size.y));
+        mesh.characterSize = originalSize * fit;
+        lastRendered = text;
+    }
+}
+
 public class ClickableSubstance : MonoBehaviour
 {
     public string Key;
@@ -1201,12 +1306,103 @@ public class VrGazeController : MonoBehaviour
     private float mouseYaw;
     private float mousePitch;
     private bool headsetMode;
+    private ControllerPointer[] controllerPointers;
+
+    private sealed class ControllerPointer
+    {
+        public UnityEngine.InputSystem.InputAction Position;
+        public UnityEngine.InputSystem.InputAction Rotation;
+        public UnityEngine.InputSystem.InputAction Tracked;
+        public UnityEngine.InputSystem.InputAction Trigger;
+        public LineRenderer Line;
+        public bool WasPressed;
+        public bool WasTracked;
+    }
+
+    private ControllerPointer CreateControllerPointer(string hand)
+    {
+        string device = "<XRController>{" + hand + "}/";
+        var pointer = new ControllerPointer
+        {
+            Position = new UnityEngine.InputSystem.InputAction(binding: device + "pointerPosition"),
+            Rotation = new UnityEngine.InputSystem.InputAction(binding: device + "pointerRotation"),
+            Tracked = new UnityEngine.InputSystem.InputAction(binding: device + "isTracked"),
+            Trigger = new UnityEngine.InputSystem.InputAction(binding: device + "triggerPressed")
+        };
+        pointer.Position.Enable();
+        pointer.Rotation.Enable();
+        pointer.Tracked.Enable();
+        pointer.Trigger.Enable();
+        var beam = new GameObject(hand + " Selection Ray");
+        beam.transform.SetParent(transform, false);
+        pointer.Line = beam.AddComponent<LineRenderer>();
+        pointer.Line.material = new Material(Shader.Find("Sprites/Default"));
+        pointer.Line.positionCount = 2;
+        pointer.Line.startWidth = .008f;
+        pointer.Line.endWidth = .004f;
+        pointer.Line.useWorldSpace = true;
+        pointer.Line.enabled = false;
+        return pointer;
+    }
+
+    private bool UpdateControllerSelection()
+    {
+        bool anyTracked = false;
+        foreach (var pointer in controllerPointers)
+        {
+            bool tracked = pointer.Tracked.ReadValue<float>() > .5f;
+            bool pressed = pointer.Trigger.ReadValue<float>() > .5f;
+            pointer.Line.enabled = tracked;
+            if (tracked)
+            {
+                anyTracked = true;
+                Transform trackingSpace = leftCamera.transform.parent;
+                Vector3 origin = trackingSpace.TransformPoint(pointer.Position.ReadValue<Vector3>());
+                Vector3 direction = trackingSpace.rotation * pointer.Rotation.ReadValue<Quaternion>() * Vector3.forward;
+                Vector3 end = origin + direction * GazeDistance;
+                Transform target = null;
+                if (Physics.Raycast(origin, direction, out RaycastHit hit, GazeDistance))
+                {
+                    end = hit.point;
+                    var substance = hit.collider.GetComponentInParent<ClickableSubstance>();
+                    var button = hit.collider.GetComponentInParent<LabActionButton>();
+                    if (substance != null) target = substance.transform;
+                    else if (button != null) target = button.transform;
+                }
+                Color color = target != null ? Color.green : Color.cyan;
+                pointer.Line.startColor = color;
+                pointer.Line.endColor = color;
+                pointer.Line.SetPosition(0, origin);
+                pointer.Line.SetPosition(1, end);
+                // Reacquiring tracking while holding the trigger must not select.
+                if (target != null && pointer.WasTracked && pressed && !pointer.WasPressed)
+                    ActivateTarget(target);
+            }
+            pointer.WasPressed = pressed;
+            pointer.WasTracked = tracked;
+        }
+        return anyTracked;
+    }
+
+    private void OnDestroy()
+    {
+        if (controllerPointers == null) return;
+        foreach (var pointer in controllerPointers)
+        {
+            pointer.Position.Dispose();
+            pointer.Rotation.Dispose();
+            pointer.Tracked.Dispose();
+            pointer.Trigger.Dispose();
+            if (pointer.Line != null) Destroy(pointer.Line.material);
+        }
+    }
 
 
     public void ConfigureHeadset(Camera cam)
         {
             headsetMode = true;
             leftCamera = cam;
+            controllerPointers = new[] { CreateControllerPointer("LeftHand"), CreateControllerPointer("RightHand") };
             BuildReticle();
             IsVrEnabled = true;
             reticle.SetActive(true);
@@ -1259,6 +1455,14 @@ public class VrGazeController : MonoBehaviour
     private void Update()
     {
         if (!IsVrEnabled) return;
+        if (headsetMode && UpdateControllerSelection())
+        {
+            reticle.SetActive(false);
+            currentTarget = null;
+            gazeTimer = 0f;
+            return;
+        }
+        reticle.SetActive(true);
         if (!headsetMode) UpdateHeadRotation();
         UpdateGazeSelection();
     }

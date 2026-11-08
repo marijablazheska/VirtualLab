@@ -1,0 +1,1011 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.3/staging' branch; Version is '6000.3.17f1 (cf0352b38e81) revision 13566802'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'en' Physical Memory: 8071 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-03T14:43:55Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User" at "2026-11-03T14:43:55.4857208Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 59412, path: "D:/Users/User/Desktop/UnityHub/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              ef5bcd9c2e2d4bdf869fff0f1e78fc10
+  Correlation Id:          d98384b68dd824a7c008a0402ff0eeb1
+  External correlation Id: 1544936492624112843
+  Machine Id:              9KyB3O/4Wyt3NDy8z/UxO2IIlEo=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-User" (connect: 0.00s, validation: 0.01s, handshake: 0.24s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User-notifications" at "2026-11-03T14:43:55.7320052Z"
+[Licensing::Client] Successfully updated the access token
+[Licensing::Module] Successfully updated the access token Y49tjmG5lK...
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 6872855709007-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.12
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.47s
+
+COMMAND LINE ARGUMENTS:
+D:\Users\User\Desktop\UnityHub\Editor\6000.3.17f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-projectPath
+D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity
+-activeBuildProfile
+Assets\Settings\Build Profiles\Android™.asset
+-build
+D:\Users\User\Desktop\VirtualLab\2_Izvrshna_verzija\VirtualLabQuest3.apk
+-logFile
+D:\Users\User\Desktop\VirtualLab\quest-build.log
+-hubSessionId
+2f042fdb-ce08-44a7-883b-9741e19c4f77
+-accessToken
+Y49tjmG5lKhWGC6mN7QkNDvbC91dORxbh1ppFcxBKRQ006f
+Successfully changed project path to: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity
+D:/Users/User/Desktop/VirtualLab/1_Izvoren_kod/VirtualLabUnity
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+Player connection [33500]  Target information:
+
+Player connection [33500]  * "[IP] 172.30.160.1 [Port] 55504 [Flags] 2 [Guid] 3523846271 [EditorId] 3523846271 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-5EEBUSG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [33500]  * "[IP] 172.20.10.5 [Port] 55504 [Flags] 2 [Guid] 3523846271 [EditorId] 3523846271 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-5EEBUSG) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [33500] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [33500] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-15896" after 2.6 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Build profile assigned via command line, path `Assets\Settings\Build Profiles\Android™.asset`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Artifact Garbage Collection - Removed 3 unused hashed content files
+Got setting from build profile YAML, name `m_BuildTarget`, value `13`
+Got setting from build profile YAML, name `m_PlatformId`, value `b9b35072a6f44c2e863f17467ea3dc13`
+[Licensing::Client] Successfully resolved entitlement details
+Got setting from build profile YAML, name `m_BuildTarget`, value `13`
+Got setting from build profile YAML, name `m_Subtarget`, value `0`
+Refreshing native plugins compatible for Editor in 6.67 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.3.17f1 (cf0352b38e81)
+[Subsystems] Discovering subsystems at path D:/Users/User/Desktop/UnityHub/Editor/6000.3.17f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Users/User/Desktop/VirtualLab/1_Izvoren_kod/VirtualLabUnity/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `m_BuildSubtarget`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `m_BuildSubtarget`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `m_BuildSubtarget`, value `0`
+Initialize mono
+Mono path[0] = 'D:/Users/User/Desktop/UnityHub/Editor/6000.3.17f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Users/User/Desktop/UnityHub/Editor/6000.3.17f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Users/User/Desktop/UnityHub/Editor/6000.3.17f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56896
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Got setting from build profile YAML, name `m_BuildSubtarget`, value `0`
+Got setting from build profile YAML, name `m_BuildSubtarget`, value `0`
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Users/User/Desktop/UnityHub/Editor/6000.3.17f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: D:/Users/User/Desktop/UnityHub/Editor/6000.3.17f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.018654 seconds.
+Got setting from build profile YAML, name `m_BuildSubtarget`, value `0`
+Got setting from build profile YAML, name `m_BuildSubtarget`, value `0`
+- Loaded All Assemblies, in  2.978 seconds
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+Got setting from build profile YAML, name `Color Space`, value `0`
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.495 seconds
+Domain Reload Profiling: 5472ms
+	BeginReloadAssembly (1227ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (11ms)
+	RebuildCommonClasses (269ms)
+	RebuildNativeTypeToScriptingClass (84ms)
+	initialDomainReloadingComplete (258ms)
+	LoadAllAssembliesAndSetupDomain (1137ms)
+		LoadAssemblies (1214ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (1118ms)
+			TypeCache.Refresh (1112ms)
+				TypeCache.ScanAssembly (973ms)
+			BuildScriptInfoCaches (1ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (2498ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2272ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (352ms)
+			SetLoadedEditorAssemblies (14ms)
+			BeforeProcessingInitializeOnLoad (458ms)
+			ProcessInitializeOnLoadAttributes (697ms)
+			ProcessInitializeOnLoadMethodAttributes (750ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+Got setting from build profile YAML, name `Color Space`, value `0`
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 38 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.xr.management@4.7.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.xr.management@2ad85c7dd480)
+    com.unity.xr.openxr@1.16.1 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf)
+    com.unity.inputsystem@1.19.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.xr.core-utils@2.6.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.xr.core-utils@a8b900321199)
+    com.unity.xr.legacyinputhelpers@2.1.13 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.xr.legacyinputhelpers@9535ff2c27ac)
+  Built-in packages:
+    com.unity.modules.ai@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vehicles@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.modules.hierarchycore)
+[Subsystems] Looking for new subsystems at path D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf
+[Subsystems] Novel subsystem found at Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/UnitySubsystemsManifest.json
+[Subsystems] Discovering subsystems at path D:/Users/User/Desktop/UnityHub/Editor/6000.3.17f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Users/User/Desktop/VirtualLab/1_Izvoren_kod/VirtualLabUnity/Assets
+[Subsystems] Discovering subsystems at path D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf
+[Subsystems] No descriptors matched for  examples in Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/UnitySubsystemsManifest.json.
+[Package Manager] Done registering packages in 0.06 seconds
+[ScriptCompilation] Requested script compilation because: InitialRefresh: Force Refresh Recompile flag enabled
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:80
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Production
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: D:\Users\User\Desktop\VirtualLab\1_Izvoren_kod\VirtualLabUnity\
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 288.9153ms
+Starting: D:\Users\User\Desktop\UnityHub\Editor\6000.3.17f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1300b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: D:/Users/User/Desktop/VirtualLab/1_Izvoren_kod/VirtualLabUnity
+ExitCode: 4 Duration: 0s261ms
+[             ] Require frontend run.  Library/Bee/1300b0aE.dag couldn't be loaded
+DisplayProgressbar: Compiling Scripts
+Starting: D:\Users\User\Desktop\UnityHub\Editor\6000.3.17f1\Editor\Data\netcorerun\netcorerun.exe "D:\Users\User\Desktop\UnityHub\Editor\6000.3.17f1\Editor\Data\Tools\BuildPipeline\ScriptCompilationBuildProgram.exe" "Library/Bee/1300b0aE.dag.json" "Library/Bee/1300b0aE-inputdata.json" "Library\Bee\buildprogram0.traceevents"
+WorkingDir: D:/Users/User/Desktop/VirtualLab/1_Izvoren_kod/VirtualLabUnity
+ExitCode: 0 Duration: 1s433ms
+Starting: D:\Users\User\Desktop\UnityHub\Editor\6000.3.17f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1300b0aE.dag" --continue-on-failure --dagfilejson="Library\Bee\1300b0aE.dag.json" --profile="Library/Bee/backend2.traceevents" ScriptAssemblies
+WorkingDir: D:/Users/User/Desktop/VirtualLab/1_Izvoren_kod/VirtualLabUnity
+ExitCode: 0 Duration: 52s
+Finished compiling graph: 349 nodes, 4254 flattened edges (3994 ToBuild, 46 ToUse), maximum node priority 180
+[133/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.rsp2
+[134/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.UnityAdditionalFile.txt
+[135/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.rsp2
+[136/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.UnityAdditionalFile.txt
+[137/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.rsp
+[138/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.UnityAdditionalFile.txt
+[139/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.rsp
+[140/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.rsp2
+[141/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.dll.mvfrm.rsp
+[142/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.rsp
+[143/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.UnityAdditionalFile.txt
+[146/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.rsp2
+[154/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.Editor.UnityAdditionalFile.txt
+[155/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.Editor.rsp2
+[156/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.dll.mvfrm.rsp
+[157/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.dll.mvfrm.rsp
+[158/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.dll.mvfrm.rsp
+[159/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.rsp
+[160/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.Editor.dll.mvfrm.rsp
+[161/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.Editor.rsp
+[162/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.Editor.rsp2
+[163/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.Editor.UnityAdditionalFile.txt
+[164/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.Editor.dll.mvfrm.rsp
+[165/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.Editor.rsp
+[166/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.UnityAdditionalFile.txt
+[167/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.rsp2
+[168/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.dll.mvfrm.rsp
+[169/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.rsp
+[170/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Editor.rsp2
+[171/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Editor.UnityAdditionalFile.txt
+[172/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Editor.dll.mvfrm.rsp
+[173/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.rsp2
+[174/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.UnityAdditionalFile.txt
+[175/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Editor.rsp
+[176/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.dll.mvfrm.rsp
+[177/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.rsp
+[178/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.rsp2
+[179/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.UnityAdditionalFile.txt
+[180/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.UnityAdditionalFile.txt
+[181/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.rsp2
+[182/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.rsp2
+[183/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.dll.mvfrm.rsp
+[184/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.dll.mvfrm.rsp
+[185/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.UnityAdditionalFile.txt
+[186/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.rsp
+[187/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.rsp
+[188/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.dll.mvfrm.rsp
+[189/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.rsp
+[190/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.UnityAdditionalFile.txt
+[191/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.rsp2
+[192/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.UnityAdditionalFile.txt
+[193/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.rsp2
+[194/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEditor.SpatialTracking.UnityAdditionalFile.txt
+[195/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEditor.XR.LegacyInputHelpers.rsp2
+[196/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MockRuntime.UnityAdditionalFile.txt
+[197/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEditor.SpatialTracking.rsp2
+[198/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.ForUI.UnityAdditionalFile.txt
+[199/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MockRuntime.rsp2
+[200/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEditor.XR.LegacyInputHelpers.UnityAdditionalFile.txt
+[201/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.rsp2
+[202/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.ConformanceAutomation.UnityAdditionalFile.txt
+[203/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.ConformanceAutomation.rsp2
+[204/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.UnityAdditionalFile.txt
+[205/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.ForUI.rsp2
+[206/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MockRuntime.dll.mvfrm.rsp
+[207/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll.mvfrm.rsp
+[208/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll.mvfrm.rsp
+[209/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.ConformanceAutomation.dll.mvfrm.rsp
+[210/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.ForUI.dll.mvfrm.rsp
+[211/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEditor.SpatialTracking.dll.mvfrm.rsp
+[212/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll.mvfrm.rsp
+[213/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEditor.XR.LegacyInputHelpers.dll.mvfrm.rsp
+[214/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MockRuntime.rsp
+[215/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.ForUI.rsp
+[216/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.rsp
+[217/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.rsp
+[218/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.rsp
+[219/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEditor.XR.LegacyInputHelpers.rsp
+[220/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/UnityEditor.SpatialTracking.rsp
+[221/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.ConformanceAutomation.rsp
+[222/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Assembly-CSharp.UnityAdditionalFile.txt
+[223/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.TestTooling.dll.mvfrm.rsp
+[224/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.TestTooling.rsp2
+[225/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Assembly-CSharp.dll.mvfrm.rsp
+[226/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Assembly-CSharp.rsp2
+[227/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.TestTooling.UnityAdditionalFile.txt
+[228/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.DocCodeSamples.rsp2
+[229/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.DocCodeSamples.dll.mvfrm.rsp
+[230/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.DocCodeSamples.UnityAdditionalFile.txt
+[231/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Assembly-CSharp.rsp
+[232/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.TestTooling.rsp
+[233/346    0s] WriteText Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.DocCodeSamples.rsp
+[234/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.dll.mvfrm
+[235/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.dll.mvfrm
+[236/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.dll.mvfrm
+[BUSY       6s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.dll (+2 others)
+[237/346    8s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.dll (+2 others)
+[238/346    8s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.dll (+2 others)
+[           1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[239/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.Management.dll
+[240/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.Management.pdb
+[           1s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[241/346    0s] CopyFiles Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll
+[242/346    0s] CopyFiles Library/ScriptAssemblies/UnityEngine.SpatialTracking.pdb
+[243/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.Management.ref.dll_B8AA0C3955A88449.mvfrm
+[244/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.SpatialTracking.ref.dll_CC46AD662704850F.mvfrm
+[245/346    2s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/UnityEditor.SpatialTracking.dll.mvfrm
+[246/346    2s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.dll.mvfrm
+[247/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.dll (+2 others)
+[248/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEditor.SpatialTracking.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEditor.SpatialTracking.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[249/346    0s] CopyFiles Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll
+[250/346    0s] CopyFiles Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll
+[251/346    0s] CopyFiles Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.pdb
+[252/346    0s] CopyFiles Library/ScriptAssemblies/UnityEditor.SpatialTracking.pdb
+[253/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEngine.XR.LegacyInputHelpers.ref.dll_632513B3DE0B9F3C.mvfrm
+[254/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.SpatialTracking.ref.dll_4005BB3EAE0C01EA.mvfrm
+[255/346   19s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[256/346    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.pdb
+[257/346    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.dll
+[258/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.InputSystem.ref.dll_7B1D397D2193763B.mvfrm
+[259/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.ForUI.dll.mvfrm
+[260/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.dll.mvfrm
+[261/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/UnityEditor.XR.LegacyInputHelpers.dll.mvfrm
+[262/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.DocCodeSamples.dll.mvfrm
+[263/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.DocCodeSamples.dll (+2 others)
+[264/346    2s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEditor.XR.LegacyInputHelpers.dll (+2 others)
+[265/346    2s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.ForUI.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.DocCodeSamples.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[266/346    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.DocCodeSamples.pdb
+[267/346    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.DocCodeSamples.dll
+[268/346    2s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/UnityEditor.XR.LegacyInputHelpers.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[269/346    0s] CopyFiles Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll
+[270/346    0s] CopyFiles Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.pdb
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.InputSystem.ForUI.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[271/346    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.ForUI.dll
+[272/346    0s] CopyFiles Library/ScriptAssemblies/Unity.InputSystem.ForUI.pdb
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[273/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.CoreUtils.dll
+[274/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.CoreUtils.pdb
+[275/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/UnityEditor.XR.LegacyInputHelpers.ref.dll_A2957EFDA2C64C37.mvfrm
+[276/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.InputSystem.ForUI.ref.dll_8456852F39E72DEA.mvfrm
+[277/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.CoreUtils.ref.dll_7BD60984F2BC85A2.mvfrm
+[278/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.Editor.dll.mvfrm
+[279/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.CoreUtils.Editor.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[280/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.CoreUtils.Editor.dll
+[281/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.CoreUtils.Editor.pdb
+[282/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.CoreUtils.Editor.ref.dll_8144CEBFC8DD722F.mvfrm
+[283/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.Editor.dll.mvfrm
+[284/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.Management.Editor.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[285/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.Management.Editor.pdb
+[286/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.Management.Editor.dll
+[287/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.Management.Editor.ref.dll_63D1283B59813AF8.mvfrm
+[288/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.dll.mvfrm
+[289/346    2s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[290/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.pdb
+[291/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.dll
+[292/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.ref.dll_CD391CA4E5ED3B9A.mvfrm
+[293/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Editor.dll.mvfrm
+[294/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.ConformanceAutomation.dll.mvfrm
+[295/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.dll.mvfrm
+[296/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.ConformanceAutomation.dll (+2 others)
+[297/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.dll (+2 others)
+[298/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[299/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.MetaQuestSupport.dll
+[300/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.MetaQuestSupport.pdb
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.ConformanceAutomation.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[301/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.ConformanceAutomation.dll
+[302/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.ConformanceAutomation.pdb
+[303/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Features.MetaQuestSupport.ref.dll_F733DA097ED735AF.mvfrm
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Editor.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[304/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Editor.dll
+[305/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Editor.pdb
+[306/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Features.ConformanceAutomation.ref.dll_F8E9C0BA9435A965.mvfrm
+[307/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Editor.ref.dll_3621FFDAA8DB43B7.mvfrm
+[308/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.dll.mvfrm
+[309/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll.mvfrm
+[310/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.dll.mvfrm
+[311/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MockRuntime.dll.mvfrm
+[312/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.dll (+2 others)
+[313/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.dll (+2 others)
+[314/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MockRuntime.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[315/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MockRuntime.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[316/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Features.OculusQuestSupport.ref.dll_54D437838FE1B0D3.mvfrm
+[317/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll.mvfrm
+[318/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Features.MockRuntime.ref.dll_5BB54C93544FF727.mvfrm
+[319/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Features.RuntimeDebugger.ref.dll_EE49132F7AB3C792.mvfrm
+[320/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.ref.dll_D7F834629185E1F2.mvfrm
+[321/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.MockRuntime.dll
+[322/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.RuntimeDebugger.dll
+[323/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.OculusQuestSupport.dll
+[324/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll
+[325/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.pdb
+[326/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.MockRuntime.pdb
+[327/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.RuntimeDebugger.pdb
+[328/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.OculusQuestSupport.pdb
+[329/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll.mvfrm
+[330/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.TestTooling.dll.mvfrm
+[331/346    1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll (+2 others)
+[332/346    2s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.TestTooling.dll (+2 others)
+[           1s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[333/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.pdb
+[334/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll
+[335/346    2s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.TestTooling.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[336/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.TestTooling.dll
+[337/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.TestTooling.pdb
+[           0s] Csc Library/Bee/artifacts/1300b0aE.dag/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll (+2 others) [CacheWrite 00000000000000000000000000000005]
+[338/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll
+[339/346    0s] CopyFiles Library/ScriptAssemblies/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.pdb
+[340/346    1s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.ref.dll_947714FF8A5EE50E.mvfrm
+[341/346    0s] MovedFromExtractor Library/Bee/artifacts/mvdfrm/Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.ref.dll_CB4BEE4624B29F3F.mvfrm
+[342/346    0s] MovedFromExtractor-Combine Library/Bee/artifacts/1300b0aE.dag/Assembly-CSharp.dll.mvfrm
+[343/346    0s] Csc Library/Bee/artifacts/1300b0aE.dag/Assembly-CSharp.dll (+2 others)
+[344/346    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[345/346    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+*** Tundra build success (52.56 seconds), 204 items updated, 346 evaluated
+AssetDatabase: script compilation time: 77.751943s
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Client] Successfully resolved entitlement details
+- Loaded All Assemblies, in  3.450 seconds
+Refreshing native plugins compatible for Editor in 87.63 ms, found 6 plugins.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.658 seconds
+Domain Reload Profiling: 7103ms
+	BeginReloadAssembly (1885ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (176ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (370ms)
+	RebuildCommonClasses (257ms)
+	RebuildNativeTypeToScriptingClass (87ms)
+	initialDomainReloadingComplete (105ms)
+	LoadAllAssembliesAndSetupDomain (1109ms)
+		LoadAssemblies (1899ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (235ms)
+			TypeCache.Refresh (176ms)
+				TypeCache.ScanAssembly (135ms)
+			BuildScriptInfoCaches (50ms)
+			ResolveRequiredComponents (3ms)
+	FinalizeReload (3660ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2699ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (165ms)
+			SetLoadedEditorAssemblies (13ms)
+			BeforeProcessingInitializeOnLoad (932ms)
+			ProcessInitializeOnLoadAttributes (1246ms)
+			ProcessInitializeOnLoadMethodAttributes (328ms)
+			AfterProcessingInitializeOnLoad (14ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (125ms)
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/ChevronUp@3x.png using Guid(006305b616daf47409935f3dc8a172e2) (TextureImporter) -> (artifact id: 'bd897621af1a6a75f0d249cf585b13f1') in 0.1085362 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_ChevronDown@2x.png using Guid(0068f400a72d84c92a1b8f5889a574b2) (TextureImporter) -> (artifact id: 'c52953b894d5801415a26d370be450f1') in 0.0175099 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Interactive Binding@2x.png using Guid(2027b97fd12d842d7a3169c784502a54) (TextureImporter) -> (artifact id: 'b05a10a472faa58abaa39ad4f67759d2') in 0.006549 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/InputSystemUIInputModule@64.png using Guid(3028dc075ba8c584d9bc7d1e0255e038) (TextureImporter) -> (artifact id: 'bffdbc462e9e774f424a0e902dd55a71') in 0.0129021 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/InputAction.png using Guid(40265a896a0f341bb956e90c59025a29) (TextureImporter) -> (artifact id: '46eccab81698076c551ae45e0f7912a5') in 0.0251397 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Mouse@4x.png using Guid(a0b78c5ab9d654a9daba91ff774b4931) (TextureImporter) -> (artifact id: '0818b1cbcf50f2e2480c2e2993887d70') in 0.0071201 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/InputActionAsset.png using Guid(b025a2a0f9e554d1e88a93b5649dfc3f) (TextureImporter) -> (artifact id: '4b2c4c9c1b2278e8c52f599aada1ec49') in 0.0784143 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/pro/propertiesBackground.png using Guid(b02e3f0c0798a4f1789a89a7697660be) (TextureImporter) -> (artifact id: 'd47132c9b72c7c10d49c72f482ac38b0') in 0.0386325 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/pro/foldoutBackground.png using Guid(c0996bc290ff74bf4834f4a8b7dc8c3e) (TextureImporter) -> (artifact id: '7d6bf6eb88afeabc752796f110a3ad83') in 0.0162611 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Axis@2x.png using Guid(d0006d51a864248adba0238883f8c71e) (TextureImporter) -> (artifact id: 'b84b8e6b14866aba4c7dbc340167ab8c') in 0.0092217 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Axis@4x.png using Guid(e01ab4b854c6d4fa3a8d869b67ecd643) (TextureImporter) -> (artifact id: '969cdd73cdcfb430951f533044dffba8') in 0.0149222 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Interactive Binding.png using Guid(2196c18f03faf4184b1aeb2c61d5571d) (TextureImporter) -> (artifact id: '05f8264d05e264c2bf81e3e37ed538af') in 0.0060351 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Dpad@4x.png using Guid(41edf25d451a744e6ad1172a677603bd) (TextureImporter) -> (artifact id: '286e394092554d0afbceb2bee1193e64') in 0.0198333 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Keyboard@3x.png using Guid(6191a40940a3e46899ecf82fa8389d01) (TextureImporter) -> (artifact id: 'ffae2d6b67c8c91d444e6a6976075f14') in 0.0094887 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Mouse@3x.png using Guid(6164e492ad3164525ab8ecd9968c3a64) (TextureImporter) -> (artifact id: '2edd1b2e10ef57851ffee1e82b69906e') in 0.0126001 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Dpad@3x.png using Guid(a1b7d9ffed68a47128c5622c13ba4752) (TextureImporter) -> (artifact id: '10d9bae0fd4b15f7f735708c273ddd48') in 0.0072654 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/ChevronDown@4x.png using Guid(d1acbe0a708dc40dc80254764e67ecfa) (TextureImporter) -> (artifact id: '2e5d4c71d5f25f5951698aec2eead1f8') in 0.0075526 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Position@3x.png using Guid(e1da124f7cbda41a4925397406076a42) (TextureImporter) -> (artifact id: '0bfafd790152f581118cb43b71a53739') in 0.0071488 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Keyboard@2x.png using Guid(f14e3a4027f834f16b235498ac15bb3f) (TextureImporter) -> (artifact id: '5d8013810e00b06adbb969a589882fac') in 0.0098905 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Keyboard@4x.png using Guid(123b6218ad27a41af933311ee524dcdc) (TextureImporter) -> (artifact id: '643301e30959267914250e0af4b01222') in 0.0068518 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Orientation@3x.png using Guid(424bff4d3ea64400e9b384cb8bebfb96) (TextureImporter) -> (artifact id: 'dd49acbf6a65e76585996eada2dd5f9f') in 0.0063704 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Stick.png using Guid(6234dae5cf6f04acb9a51e04d448e444) (TextureImporter) -> (artifact id: 'a2c8478131d3dc7101a07008e41fa4cb') in 0.0062862 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Axis@3x.png using Guid(62c846073cb844a2b926e4bbd3189647) (TextureImporter) -> (artifact id: 'bbee16646ee03dd019b1b56b4fe61adc') in 0.0186399 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Orientation@2x.png using Guid(62f8dda50382d487597224e197cbd34f) (TextureImporter) -> (artifact id: '0830378bef7dfa620745dfd0c218acd2') in 0.0074764 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/InputControl@2x.png using Guid(62ce957ca99fe4fcba573a5b141eb113) (TextureImporter) -> (artifact id: '86304979f9be11a75c8a0b07dc3a5246') in 0.0062434 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Touch@2x.png using Guid(82073a8bfd6b8488a89b8796d500d12d) (TextureImporter) -> (artifact id: '921bde0b77fe95c5b2ca83c4a95688b3') in 0.0079155 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Joystick.png using Guid(c28849deb3e3b45c98965e7efd26f7be) (TextureImporter) -> (artifact id: 'db49cf269c50083041605411f14533b6') in 0.0063099 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_InputControl@4x.png using Guid(e2078613efd9e410c8771cbd2717f4e7) (TextureImporter) -> (artifact id: '47828fa4db78e58be5f6969dc960b329') in 0.0081432 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Stick@4x.png using Guid(f2fd4d7aa99c94a67a6a137fe979a760) (TextureImporter) -> (artifact id: 'd89c2ee8d32d0d80770c8a029cfe2bf7') in 0.0191959 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Stick@3x.png using Guid(03c3559bb64164f7785cd1250e475250) (TextureImporter) -> (artifact id: '8c334ee3171d0b1784a43863e63e29e5') in 0.0463578 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Button.png using Guid(0309256f03c114697813e2296f0a1f18) (TextureImporter) -> (artifact id: '19db05ec4ed2644850e669e034f00646') in 0.0187433 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Pen@2x.png using Guid(13fb345befe624412ac0bd0138d7bcf2) (TextureImporter) -> (artifact id: 'a98ed18483160dcc258be97981b986cb') in 0.0147063 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/blue.png using Guid(33f32142c2c2d4662be5f5274db27158) (TextureImporter) -> (artifact id: '59722516762897b110c5f988cdce8d0f') in 0.0204468 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Gamepad@4x.png using Guid(83438053370c84456a73f7f95ef821fb) (TextureImporter) -> (artifact id: '8bcc5da4bbe9859a0cd840db352df102') in 0.011151 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Keyboard.png using Guid(83382fb171da648c594229ca6fa7ad94) (TextureImporter) -> (artifact id: '2f3f5e85849ec44d61a2d638afe51b23') in 0.0054275 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Position@2x.png using Guid(a3fa73829479e4b41965e749fcca7c12) (TextureImporter) -> (artifact id: '0bfde6c4a42aae9b9f6da95a7dcddcba') in 0.0098138 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Axis.png using Guid(34f9452ba2ee14c0b9c976800caef571) (TextureImporter) -> (artifact id: 'f956976542a7e1399fd31fdc1538a7fd') in 0.0058037 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Interactive Binding@3x.png using Guid(542599ad529004327a7b18f7b2a4aeb8) (TextureImporter) -> (artifact id: '7672cc608c640d57fcea0a7463949518') in 0.0065482 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Touch.png using Guid(94fa2e214a138425e8afbbe1329e0b55) (TextureImporter) -> (artifact id: '888922e47e81c51478be941b5df5c0ec') in 0.0058535 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/pro/actionTreeBackgroundWithoutBorder.png using Guid(943deaaee9c9347e0a455aa208526c42) (TextureImporter) -> (artifact id: 'c1c1b0057149b6a16149bce7e1dc3f98') in 0.0067231 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Joystick@3x.png using Guid(a4610f64a5a4e4625b1ddbd44b04c5a6) (TextureImporter) -> (artifact id: '38df5c9d2281b967e6b46832cb6482e1') in 0.0071487 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/TrackedPoseDriver.png using Guid(a4d5a38cb01e9c54aa75431f797059cb) (TextureImporter) -> (artifact id: '5bd2b91b55e1091136842c5a39e589e4') in 0.0061983 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Add Binding.png using Guid(a4bbff684804d4c84b61cd0256cd2360) (TextureImporter) -> (artifact id: '753b590f399ea547a7a771dc03122139') in 0.057481 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Position@3x.png using Guid(a43c2c10c85c448b584c8f2840f86915) (TextureImporter) -> (artifact id: '4e731f86bc5d0e680ff11884cd284aa4') in 0.0069389 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Stick@3x.png using Guid(a4deca3e01bf64bfc9136f4cb3b41c9f) (TextureImporter) -> (artifact id: 'ca3cdf2bc56e3f9e699f6fb041f87e70') in 0.0095691 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_InputControl@2x.png using Guid(c4235c4abfa134435bd4c8c1f8fd8c56) (TextureImporter) -> (artifact id: 'b3d664b11255f3bcdb81a92af8c59097') in 0.005623 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/pro/actionTreeBackground.png using Guid(c4b66e31395c54087a2fbc13ae7e0f3c) (TextureImporter) -> (artifact id: '4a5a746a786b356fcb3bae63b9940c86') in 0.0145802 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/ChevronUp@4x.png using Guid(c4f7551c56dfb47a7a105b6579646d2f) (TextureImporter) -> (artifact id: '8c1ce4980934305907ea9c8b37adaa02') in 0.0061058 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_ChevronUp@4x.png using Guid(e46ad23216d074f828f3437b21912c64) (TextureImporter) -> (artifact id: 'cb0c664f16ab3ae5f9ff69877bc754dc') in 0.0090454 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Interactive Binding@4x.png using Guid(f4e6ca70dd9734da1a812be882c6364e) (TextureImporter) -> (artifact id: '820c3eeb4cfb342ca389fa82dfd96fa9') in 0.0223338 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Mouse@3x.png using Guid(05bbafd21bf3c4cca93cb8ddfbbd4070) (TextureImporter) -> (artifact id: '653f4faedeabf3019786fe73374d1b2e') in 0.0074691 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/ChevronDown@2x.png using Guid(153c8e15f7f6c452ca50f6795813ed39) (TextureImporter) -> (artifact id: '5731f1dbbbebc97b8f8679ace7fa095d') in 0.0075202 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Position@2x.png using Guid(2552e303d22424da2ad62552efbd06e8) (TextureImporter) -> (artifact id: '67127c56304fa5a53c65e77a56c88e98') in 0.0075479 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Stick.png using Guid(55040e210fa9b426b861a26909ab4de7) (TextureImporter) -> (artifact id: 'ad93826fb21f7fbdacbf63015f7a25f7') in 0.0058557 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Gamepad@4x.png using Guid(7543bb6341c2140f292c8c852e7a3bbf) (TextureImporter) -> (artifact id: '13db9ee82d63d4dc25f99cb27e91e1a9') in 0.0102941 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Add Binding.png using Guid(958a10dec4f3a4764bb345b0aa03510b) (TextureImporter) -> (artifact id: 'a5397a154b9aa1dcb46fb82633cb986d') in 0.0510225 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Position.png using Guid(c5bdeae4dabac4bf19f7a1afcf5ca678) (TextureImporter) -> (artifact id: 'fdc2f7869b1f2ad042ec060d8e507fe4') in 0.0058857 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Joystick@4x.png using Guid(f58c918f135bd4b8abe5fdb06bda7f4d) (TextureImporter) -> (artifact id: '4a8d40198550648070a175a59e97b3de') in 0.0099324 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Stick@4x.png using Guid(f5ace3d653812436a812bebfe7f9a242) (TextureImporter) -> (artifact id: 'a792a7dc43464aecf7afe84fa919d917') in 0.0070484 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_ChevronDown.png using Guid(06ad495fb07444736b59782982d96250) (TextureImporter) -> (artifact id: '402fc62d9d982be0a38be46ee80d9398') in 0.0174992 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Mouse.png using Guid(264ffc05d7d2841d5a6065854b6282ca) (TextureImporter) -> (artifact id: 'c58d3e8aa773cab830c80ddc4f89767e') in 0.0078574 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Position.png using Guid(5684eb521fa99491e9061de682d1622e) (TextureImporter) -> (artifact id: '0fee6214150e6550e3b0743557ddf5bd') in 0.061275 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Gamepad.png using Guid(76dc61ff6c2d84b24b0a2ce01dc2842d) (TextureImporter) -> (artifact id: 'bf2b82986c250fa48f33c27e6a7d839a') in 0.0064034 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Add Binding@4x.png using Guid(862c5ca31844d4a6d9aa804af982ce65) (TextureImporter) -> (artifact id: 'ebb4e581c5f94c603c78487fca36bce2') in 0.0087134 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Pen@2x.png using Guid(96f7582a52a6843c09e0c71617e94f2d) (TextureImporter) -> (artifact id: '2d3cf392c14638eae5142ab1da033acc') in 0.0067004 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Dpad.png using Guid(b60b9eb0384c345c89435d0982a6e4fd) (TextureImporter) -> (artifact id: 'ec9c941a9724a488b1fc30028eff238f') in 0.0055624 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Pen@3x.png using Guid(17b3fef87d666459d860ad88452862da) (TextureImporter) -> (artifact id: 'ac36487182caccfb9eca66c9a683b888') in 0.0069431 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Gamepad.png using Guid(17c8753d0e5e24194b06404851be7f13) (TextureImporter) -> (artifact id: '00962d6393844ed487c13da8c28fdc35') in 0.0539917 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Axis@2x.png using Guid(27163f3cda5b9431d928f2b33eeb5cf1) (TextureImporter) -> (artifact id: 'f1b31aab18d8a3d73e4be2a129941b76') in 0.0113306 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Joystick@2x.png using Guid(27fa98be5deb54cbf9c11ffc540272b2) (TextureImporter) -> (artifact id: '2d49548914eaea1f1859bf69d43c9cdd') in 0.0081635 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/yellow.png using Guid(47cf506b4219343519083fe1c0b8fc9c) (TextureImporter) -> (artifact id: 'b9211934b6b1e70ae9659c12625fc65d') in 0.01228 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/ChevronUp@2x.png using Guid(57dfdce0eaf2f48a9bd9e60e920e446b) (TextureImporter) -> (artifact id: '9b1fa8244a7ef11ed85edc1b4443aa65') in 0.0435764 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Keyboard@2x.png using Guid(87ae93efe5d3b4262995b0acdc987d88) (TextureImporter) -> (artifact id: '63897f0cbed4f4f8644fd7c12668b942') in 0.0249792 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Mouse@2x.png using Guid(9721efa02e520488d96c36460fe7e4a6) (TextureImporter) -> (artifact id: '2bfffdf0afcf9cb4e4a74efc837881bd') in 0.0102524 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/pink.png using Guid(d7b144323984d4298924c65ed071dea1) (TextureImporter) -> (artifact id: '64840ad1d8ca0e3783c4be3a0596ce63') in 0.0065293 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Dpad@4x.png using Guid(d7073cfe15a1a48bfb7ff59225052484) (TextureImporter) -> (artifact id: 'dc30bb22f487da15bf614d918fac6b78') in 0.0102945 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Touch@3x.png using Guid(e77ee65b5139048949dc0ac5614efeec) (TextureImporter) -> (artifact id: '675a5a497aa7f54e97b6d85a9e810d4b') in 0.0077611 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Dpad.png using Guid(e76f0489d4db34a2fbc3532e07f2848a) (TextureImporter) -> (artifact id: 'cff8f6a675ea6b74e34b572e10faf5fb') in 0.0414426 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/InputControl@4x.png using Guid(08c99f7c2a7fa410d8567323e32ad5f5) (TextureImporter) -> (artifact id: 'b7c25f098b2e4759fb7b41fab490d595') in 0.0082078 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Joystick@2x.png using Guid(18e45e1f11fae429c80c200cca8e0b4c) (TextureImporter) -> (artifact id: 'ccc127bc376af7efeef26eb6b04ffbf4') in 0.0057864 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Touch.png using Guid(588041e6f0efb43489b38677e0aac58f) (TextureImporter) -> (artifact id: '92cbcd4580de356e4021061ac32748f0') in 0.0052696 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Stick@2x.png using Guid(5881d226463a047cb8db57c9cb0ebc0f) (TextureImporter) -> (artifact id: '647449ad92282ea8079da0d0c6fcacc5') in 0.0074017 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Dpad@2x.png using Guid(5806833d077654e5784b7cbf3e722f58) (TextureImporter) -> (artifact id: 'ab5807386eee8bf76119ac16d73f8ab7') in 0.0057008 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/ChevronDown@3x.png using Guid(985cbca1705a64c80b370afdb30b3ee7) (TextureImporter) -> (artifact id: '2b1d259dffad2fbe327d0d5b7043d38a') in 0.0093744 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_ChevronUp@2x.png using Guid(a89bfcdeffde84e7ebf930d44b695435) (TextureImporter) -> (artifact id: '046e88116c2337366a259861176c3bf1') in 0.0339039 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Joystick@4x.png using Guid(d88596134c72c47b99d7d55583f4c6bf) (TextureImporter) -> (artifact id: 'dcec4975fe92cb0a79a67382485281d7') in 0.0065505 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Button@2x.png using Guid(0962795d1cafc460b9027de55b1c0a80) (TextureImporter) -> (artifact id: '831a7e1df544685556bda57f9562e6aa') in 0.0065774 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Mouse@4x.png using Guid(1918e7bff8ff44878a0003977ca03971) (TextureImporter) -> (artifact id: 'c29a5b914d0580d0fc4f06004affc233') in 0.0063535 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_InputControl.png using Guid(399cd90f4e31041e692a7d3a8b1aa4d0) (TextureImporter) -> (artifact id: '2c1b1322193a9ef14fa79c5c530eb83e') in 0.0058111 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Axis@4x.png using Guid(a940917cc397643afb071010cb2143d9) (TextureImporter) -> (artifact id: '5557e23eb9913d35c780947ded8ca3e5') in 0.0071537 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/ChevronUp.png using Guid(a9fe7c3d19af4432b9ae2a5172f4ea72) (TextureImporter) -> (artifact id: 'b49c89d69b6c12ba320a9f499816fc68') in 0.0257234 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Orientation.png using Guid(c933c2bcad7ef46309fde7c1cf11b39a) (TextureImporter) -> (artifact id: 'ab4354de84dcbeed15a735906c8fb03b') in 0.006015 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Position@4x.png using Guid(c998b283038914e699477f514ecb31ac) (TextureImporter) -> (artifact id: 'f3dd0114eea2d07e7535208e3609d590') in 0.0069457 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Pen@4x.png using Guid(0aec7c7bf99354f66bc2a1d18bd0b4d2) (TextureImporter) -> (artifact id: '5947418d6c743b634876ed8c59afa9bb') in 0.010937 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Button.png using Guid(2a5d0a7febdc741039abf135883517e5) (TextureImporter) -> (artifact id: '78662ca5f441798c37ccdf16929ae65a') in 0.0063486 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Gamepad@3x.png using Guid(4ae0b2f68c2464272b1b10105262b09b) (TextureImporter) -> (artifact id: '2317c4e383fd8513d009681582284b84') in 0.0068517 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Add Binding@4x.png using Guid(4a0ce0eda6ee74c669b13104649e1313) (TextureImporter) -> (artifact id: '67f78e7d46af966343948028a2b54c3d') in 0.0061967 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/personal/foldoutBackground.png using Guid(5ab69704aa4984b49bc426da72fabbed) (TextureImporter) -> (artifact id: '9c556c8fef8fc8e5d5cf981ac15d35b5') in 0.0073309 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Keyboard.png using Guid(5a5b9538c3aaa4587856e68a93a92a51) (TextureImporter) -> (artifact id: '92dcd8ae43ad8541d15dc90e26df39f2') in 0.0053888 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/MultiplayerEventSystem@64.png using Guid(6a237171e2346e3458db37eb0f90d42b) (TextureImporter) -> (artifact id: 'f3e78da7fdf8750530d2cb1533a7092e') in 0.010621 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Touch@3x.png using Guid(9ad5d5b6a25b749e78b4950eae0a8ec2) (TextureImporter) -> (artifact id: 'f3f7849b2fb6148c73e7fb42855a79af') in 0.0063841 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Button@4x.png using Guid(aa356632480554016ab8f4200032981b) (TextureImporter) -> (artifact id: '847e31830ea30df38a2c42978567d1dc') in 0.0412925 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/personal/propertiesBackground.png using Guid(aa4c2360f910d46f497f75b4b6677358) (TextureImporter) -> (artifact id: 'bc7ee85aabb19cabeefc9bb86ae1923c') in 0.0065408 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/ChevronDown.png using Guid(ba304f5556a3a4fac98d126883083e7e) (TextureImporter) -> (artifact id: '21f5328a0cf6f812771344de0fadef80') in 0.0099289 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Add Binding@3x.png using Guid(ca933a91c81734ddd88b17c8481ec1e9) (TextureImporter) -> (artifact id: '39c0f51b0e28df12b335adadd648bace') in 0.0064208 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Interactive Binding@3x.png using Guid(cac8742b1b72b44699fd1663287ca47d) (TextureImporter) -> (artifact id: 'bed5f8ce5a53f4adc0a255e576c8037d') in 0.007675 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Orientation@2x.png using Guid(cae83450c8b18499c8c0239edf8bcc31) (TextureImporter) -> (artifact id: 'bca91236eca6632674c0dcb476fde2a5') in 0.0194241 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Mouse@2x.png using Guid(daa9ba527d8a34b218224b8287ce11d3) (TextureImporter) -> (artifact id: '54aa9b1925cde0859ef787eb00953819') in 0.0056923 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Pen.png using Guid(ea8b7319643924985a9ee4ca18b8db59) (TextureImporter) -> (artifact id: '6b3c64443673b26e0e44afc442226a3a') in 0.00604 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Pen@3x.png using Guid(1bf9cdd4bc492489c8c7c6190785fc48) (TextureImporter) -> (artifact id: '62bc0fb5e1d21265053790816a2e300a') in 0.005855 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Interactive Binding@2x.png using Guid(3b78dc1763429489c9a1c70faf4f9a0e) (TextureImporter) -> (artifact id: '692367ba2b7f0cf53e6d2279b26cd991') in 0.0066992 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/TrackedPoseDriver@4x.png using Guid(7b8bfaee8f8631c4789ac62373cbc2d4) (TextureImporter) -> (artifact id: '7913e6c059355ac840c2e80b9376066f') in 0.0076175 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Add Binding@3x.png using Guid(8be1fbf4b24de44c99840805bdae9e40) (TextureImporter) -> (artifact id: '1ae2d0765b6a9a44e6b28fc55b3ee7c9') in 0.0079037 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Dpad@2x.png using Guid(ab9b5824ece1d443aa1f3a5672d9da86) (TextureImporter) -> (artifact id: '608a4cb2c46fc8e44d3e4f41fb69c425') in 0.005343 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Pen.png using Guid(bb42fb9342e9d4e68b6cf39a2e071d9b) (TextureImporter) -> (artifact id: '04103e131b30760b3ca0bd8c15c0bd67') in 0.0638546 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Add Binding@2x.png using Guid(bb5fa99d6e9434c9ebf101c956021ee1) (TextureImporter) -> (artifact id: '2cedc141351a922197f8f7d4baf45563') in 0.0058271 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Button@4x.png using Guid(db3dc7a02ac6d4e90bbe905a44ac265b) (TextureImporter) -> (artifact id: '8d68216d9d95c9fb40186e7e38c9fe65') in 0.0077032 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Interactive Binding.png using Guid(eb28fd64eacfa495c97193108f1cdf03) (TextureImporter) -> (artifact id: '433928e4e9279115900913fd1e894d3d') in 0.0051841 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Orientation@4x.png using Guid(1c751eb104ad5407992e614361d5f81e) (TextureImporter) -> (artifact id: '9145cad419541533498727c1fdc43cc4') in 0.0066984 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Button@2x.png using Guid(1c37f00575bd6494ea726be5afee89b9) (TextureImporter) -> (artifact id: '8db6936a0247175bc40d4a01372b0c22') in 0.0058266 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Dpad@3x.png using Guid(6c1147159d9dc42948601b29dfc9a40c) (TextureImporter) -> (artifact id: '37dd10f2088bb563d175626696fa1f0d') in 0.0055075 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Pen@4x.png using Guid(acf10446fff184bb98db6350c2c43148) (TextureImporter) -> (artifact id: '3a6f6640001a591abb88ead3e860f33d') in 0.0069832 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Position@4x.png using Guid(ac4c5ccb2785f4460b2dcfe47010c688) (TextureImporter) -> (artifact id: 'c97635727ca421a19a1341a494a64ee7') in 0.0059461 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/InputControl.png using Guid(ec85de66fa5b64dd984fdcc82f8f92b3) (TextureImporter) -> (artifact id: '053f9ea449cb53cacf09ed4b80271a6f') in 0.042481 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Joystick@3x.png using Guid(fcaa0d99df7c74f52afaa17a375dd393) (TextureImporter) -> (artifact id: 'e1d09664b125b15ec99c4d07669fe26f') in 0.0056745 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_ChevronDown@4x.png using Guid(0de917098a5b848b1a371e570928ce10) (TextureImporter) -> (artifact id: '6c92cdd1103d8ed15cabe8c058f3d1e1') in 0.0057997 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Add Binding@2x.png using Guid(3d7dc8d6b9a96490b9aa433645712fdf) (TextureImporter) -> (artifact id: '6f24a5a092cef47b3320247af5a083bc') in 0.0072259 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Gamepad@2x.png using Guid(4defb5292901c41f29313d9c9c87a7eb) (TextureImporter) -> (artifact id: 'd2d66435c21423c6f8ed3679280d7376') in 0.0055162 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_ChevronDown@3x.png using Guid(5d96795fd770f47d69d997b053532730) (TextureImporter) -> (artifact id: '49821044cf57f909009d64e0cb3b3da9') in 0.0061009 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Stick@2x.png using Guid(5d0b11389336d4b16b96f147c9f912e2) (TextureImporter) -> (artifact id: 'e04fea901e75cd0b3ef1b8324101e138') in 0.0390861 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Touch@4x.png using Guid(6db042035460c4167a6ab8d1ac3c2681) (TextureImporter) -> (artifact id: '00a889605cad62cd315224972d0b2879') in 0.0061675 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Joystick.png using Guid(7d4638131127c4f4382fb36cf16c52fe) (TextureImporter) -> (artifact id: 'a4260ae515233dcff6c5db5d6e6db8d2') in 0.0094086 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_ChevronUp@3x.png using Guid(0efecba65ae4341a385cd5d39a2af765) (TextureImporter) -> (artifact id: 'd9b8f20371e08e2eb174d707a7fb03a1') in 0.0055987 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Axis@3x.png using Guid(2e27a82b5cc4e4ef98cbef2d0b324aed) (TextureImporter) -> (artifact id: '19d875cb399ee3a8768316ca4c843487') in 0.0062708 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Touch@4x.png using Guid(6e9283a12f5b74afbba696cbb82f5e7f) (TextureImporter) -> (artifact id: '236ad57a1b8745c4fe530ff59cbc5758') in 0.0237881 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Axis.png using Guid(7e853779c8fed4ebf917a0de21c79602) (TextureImporter) -> (artifact id: 'a93f622d72025f36415a580d512c9028') in 0.0066582 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Mouse.png using Guid(9eb2b64988cb1443cab6da5dc5300d1c) (TextureImporter) -> (artifact id: 'b9a8a13c85d9a0627862c332059b688a') in 0.0065708 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Keyboard@3x.png using Guid(9ec4e316700da46b88741a8153b33963) (TextureImporter) -> (artifact id: '68890d2c4b70d053a5cfcace920d10de') in 0.0052758 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Gamepad@3x.png using Guid(9e882b58df0964f5b90ff99cb481ee79) (TextureImporter) -> (artifact id: '9854828939ab9d1c5f5023603a9a0eb0') in 0.0065823 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Interactive Binding@4x.png using Guid(9e6c9e992a2ee4327bce1d6a8189cedb) (TextureImporter) -> (artifact id: 'a02a6e34af9cc703f501cf73e8278ae3') in 0.012006 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Gamepad@2x.png using Guid(bed935caee9524e6780614c2055bfd35) (TextureImporter) -> (artifact id: '0aadfd591fa4957b982caa9ac0463b5a') in 0.0079068 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Touch@2x.png using Guid(ceaa885da02f84da195f87de12535da6) (TextureImporter) -> (artifact id: '7dcf6a10341ffd258ebf7fd8d56e9f36') in 0.006763 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/personal/actionTreeBackground.png using Guid(ce5f11cd993284c4f9c54f854bdc8c9c) (TextureImporter) -> (artifact id: '3f621a0aa95519aae5ea5d9bcc0df0e5') in 0.0056328 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_Orientation@4x.png using Guid(de98baf415a2c4d7dbe0de74cb6e171c) (TextureImporter) -> (artifact id: 'e78735372b01534c2db0a2e22e69c766') in 0.0063302 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Orientation@3x.png using Guid(5f09d534eb1414449a2758696bd4dd11) (TextureImporter) -> (artifact id: '20677731dc4ae378cf1fa3bad09d5914') in 0.0152721 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Keyboard@4x.png using Guid(7fc0926499f7a4500b152d45397c44a4) (TextureImporter) -> (artifact id: '89175570a0f19316dbdf7485e58f063f') in 0.0072575 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/Orientation.png using Guid(7fb7b46a8c63948d2b28dc394281bf5a) (TextureImporter) -> (artifact id: '51bc65fa408c18a859bf40ed73f2a96a') in 0.0058843 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/d_ChevronUp.png using Guid(7fad89501bb5c408e956934bf2eb8ae3) (TextureImporter) -> (artifact id: 'ecb335aec4544cf463f0782e4d053217') in 0.0068043 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/personal/actionTreeBackgroundWithoutBorder.png using Guid(cf632ed80bf1f46c980de6b1b8b903ef) (TextureImporter) -> (artifact id: 'f80682e8ac3ef9bd91674f9821a922d7') in 0.006551 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/Icons/TrackedPoseDriver@2x.png using Guid(ff8479815905ce84e9ef610d926f28c8) (TextureImporter) -> (artifact id: 'bcab24821415c83c04bfcb9990f31ca7') in 0.0056936 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/PackageResources/green.png using Guid(ffeba93637e654de6a5906b48520dc94) (TextureImporter) -> (artifact id: 'be94d83ce6d27dd8ca26378507c1c6d5') in 0.007049 seconds
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/UITKAssetEditor/PackageResources/BindingPanelRowTemplate.uxml using Guid(449c8e5ca27af8e4a9db710c8be5e4df) (ScriptedImporter) -> (artifact id: 'd92ce9d7f78af3c2408ec45db4092803') in 1.4337108 seconds
+Refreshing native plugins compatible for Editor in 64.14 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=d3c73b3443a94de4b8557d2045bc3df5): Total: 92.921 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=152 (actual=152, local cache=0, cache server=0)
+		Asset DB Process Time: managed=115 ms, native=8373 ms
+		Asset DB Callback time: managed=2902 ms, native=184 ms
+		Scripting: domain reloads=1, domain reload time=3451 ms, compile time=77830 ms, other=63 ms
+		Project Asset Count: scripts=350, non-scripts=242
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.003ms
+	InvokePackagesCallback: 94.084ms
+	ApplyChangesToAssetFolders: 2.309ms
+	Scan: 219.993ms
+	OnSourceAssetsModified: 3.037ms
+	CategorizeAssetsWithTransientArtifact: 133.105ms
+	ProcessAssetsWithTransientArtifactChanges: 60.776ms
+	CategorizeAssets: 24.708ms
+	ImportOutOfDateAssets: 7524.285ms (-73964.998ms without children)
+		ImportManagerImport: 3598.236ms (76.384ms without children)
+			ImportInProcess: 3520.235ms
+			UpdateCategorizedAssets: 1.617ms
+		CompileScripts: 77830.124ms
+		ReloadNativeAssets: 0.028ms
+		UnloadImportedAssets: 0.487ms
+		ReloadImportedAssets: 0.037ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.426ms
+		InitializingProgressBar: 0.014ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 59.929ms
+	PostProcessAllAssets: 2925.397ms
+	Hotreload: 71.583ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.008ms
+	UnloadStreamsBegin: 4.298ms
+	PersistCurrentRevisions: 0.762ms
+	UnloadStreamsEnd: 0.002ms
+	GenerateScriptTypeHashes: 4.224ms
+	Untracked: 81856.973ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 2.103ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-VirtualLabUnity
+Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 985 unused Assets / (0.6 MB). Loaded Objects now: 1648.
+Memory consumption went from 104.5 MB to 103.9 MB.
+Total: 33.014700 ms (FindLiveObjects: 0.308200 ms CreateObjectMapping: 0.188700 ms MarkObjects: 30.822900 ms  DeleteObjects: 1.691900 ms)
+
+Gamma Color Space is not supported when using OpenGLES.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.XR.OpenXR.OpenXRProjectValidation:LogBuildValidationIssues (UnityEditor.BuildTargetGroup) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs:512)
+UnityEditor.XR.OpenXR.OpenXRProjectValidationBuildStep:OnPreprocessBuild (UnityEditor.Build.Reporting.BuildReport) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Editor/OpenXRProjectValidationRulesSetup.cs:233)
+UnityEditor.Build.BuildPipelineInterfaces/<>c__DisplayClass17_0:<OnBuildPreProcess>b__1 (UnityEditor.Build.IPreprocessBuildWithReport)
+UnityEditor.Build.BuildPipelineInterfaces:InvokeCallbackInterfacesPair<UnityEditor.Build.IPreprocessBuild, UnityEditor.Build.IPreprocessBuildWithReport> (System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuild>,System.Action`1<UnityEditor.Build.IPreprocessBuild>,System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuildWithReport>,System.Action`1<UnityEditor.Build.IPreprocessBuildWithReport>,bool)
+UnityEditor.Build.BuildPipelineInterfaces:OnBuildPreProcess (UnityEditor.Build.Reporting.BuildReport)
+UnityEditor.BuildPipeline:BuildPlayerInternalNoCheck (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[],bool)
+UnityEditor.BuildPipeline:BuildPlayerInternal (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerOptions)
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerWithProfileOptions)
+UnityEditor.Build.Profile.BuildProfileCLI:BuildActiveProfileWithPath (string)
+
+(Filename: ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs Line: 512)
+
+[Optional] Switch to use InputSystem.XR.PoseControl instead of OpenXR.Input.PoseControl, which will be deprecated in a future release.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+UnityEditor.XR.OpenXR.OpenXRProjectValidation:LogBuildValidationIssues (UnityEditor.BuildTargetGroup) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs:514)
+UnityEditor.XR.OpenXR.OpenXRProjectValidationBuildStep:OnPreprocessBuild (UnityEditor.Build.Reporting.BuildReport) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Editor/OpenXRProjectValidationRulesSetup.cs:233)
+UnityEditor.Build.BuildPipelineInterfaces/<>c__DisplayClass17_0:<OnBuildPreProcess>b__1 (UnityEditor.Build.IPreprocessBuildWithReport)
+UnityEditor.Build.BuildPipelineInterfaces:InvokeCallbackInterfacesPair<UnityEditor.Build.IPreprocessBuild, UnityEditor.Build.IPreprocessBuildWithReport> (System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuild>,System.Action`1<UnityEditor.Build.IPreprocessBuild>,System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuildWithReport>,System.Action`1<UnityEditor.Build.IPreprocessBuildWithReport>,bool)
+UnityEditor.Build.BuildPipelineInterfaces:OnBuildPreProcess (UnityEditor.Build.Reporting.BuildReport)
+UnityEditor.BuildPipeline:BuildPlayerInternalNoCheck (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[],bool)
+UnityEditor.BuildPipeline:BuildPlayerInternal (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerOptions)
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerWithProfileOptions)
+UnityEditor.Build.Profile.BuildProfileCLI:BuildActiveProfileWithPath (string)
+
+(Filename: ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs Line: 514)
+
+[Optional] Switch to use StickControl thumbsticks instead of Vector2Control, but may break existing projects that have code dependencies to the Vector2Control type. StickControl allows more input options for thumbstick-based control, such as acting as both a combined 2D vector, two independent axes or a four-way Dpad with 4 independent buttons.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+UnityEditor.XR.OpenXR.OpenXRProjectValidation:LogBuildValidationIssues (UnityEditor.BuildTargetGroup) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs:514)
+UnityEditor.XR.OpenXR.OpenXRProjectValidationBuildStep:OnPreprocessBuild (UnityEditor.Build.Reporting.BuildReport) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Editor/OpenXRProjectValidationRulesSetup.cs:233)
+UnityEditor.Build.BuildPipelineInterfaces/<>c__DisplayClass17_0:<OnBuildPreProcess>b__1 (UnityEditor.Build.IPreprocessBuildWithReport)
+UnityEditor.Build.BuildPipelineInterfaces:InvokeCallbackInterfacesPair<UnityEditor.Build.IPreprocessBuild, UnityEditor.Build.IPreprocessBuildWithReport> (System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuild>,System.Action`1<UnityEditor.Build.IPreprocessBuild>,System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuildWithReport>,System.Action`1<UnityEditor.Build.IPreprocessBuildWithReport>,bool)
+UnityEditor.Build.BuildPipelineInterfaces:OnBuildPreProcess (UnityEditor.Build.Reporting.BuildReport)
+UnityEditor.BuildPipeline:BuildPlayerInternalNoCheck (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[],bool)
+UnityEditor.BuildPipeline:BuildPlayerInternal (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerOptions)
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerWithProfileOptions)
+UnityEditor.Build.Profile.BuildProfileCLI:BuildActiveProfileWithPath (string)
+
+(Filename: ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs Line: 514)
+
+[Optional] Latency Optimization is recommended to be set to <b>Prioritize Input Polling</b> when Meta Quest support is enabled.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+UnityEditor.XR.OpenXR.OpenXRProjectValidation:LogBuildValidationIssues (UnityEditor.BuildTargetGroup) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs:514)
+UnityEditor.XR.OpenXR.OpenXRProjectValidationBuildStep:OnPreprocessBuild (UnityEditor.Build.Reporting.BuildReport) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Editor/OpenXRProjectValidationRulesSetup.cs:233)
+UnityEditor.Build.BuildPipelineInterfaces/<>c__DisplayClass17_0:<OnBuildPreProcess>b__1 (UnityEditor.Build.IPreprocessBuildWithReport)
+UnityEditor.Build.BuildPipelineInterfaces:InvokeCallbackInterfacesPair<UnityEditor.Build.IPreprocessBuild, UnityEditor.Build.IPreprocessBuildWithReport> (System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuild>,System.Action`1<UnityEditor.Build.IPreprocessBuild>,System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuildWithReport>,System.Action`1<UnityEditor.Build.IPreprocessBuildWithReport>,bool)
+UnityEditor.Build.BuildPipelineInterfaces:OnBuildPreProcess (UnityEditor.Build.Reporting.BuildReport)
+UnityEditor.BuildPipeline:BuildPlayerInternalNoCheck (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[],bool)
+UnityEditor.BuildPipeline:BuildPlayerInternal (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerOptions)
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerWithProfileOptions)
+UnityEditor.Build.Profile.BuildProfileCLI:BuildActiveProfileWithPath (string)
+
+(Filename: ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs Line: 514)
+
+Double click to fix OpenXR Project Validation Issues.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.XR.OpenXR.OpenXRProjectValidation:LogBuildValidationIssues (UnityEditor.BuildTargetGroup) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs:520)
+UnityEditor.XR.OpenXR.OpenXRProjectValidationBuildStep:OnPreprocessBuild (UnityEditor.Build.Reporting.BuildReport) (at ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Editor/OpenXRProjectValidationRulesSetup.cs:233)
+UnityEditor.Build.BuildPipelineInterfaces/<>c__DisplayClass17_0:<OnBuildPreProcess>b__1 (UnityEditor.Build.IPreprocessBuildWithReport)
+UnityEditor.Build.BuildPipelineInterfaces:InvokeCallbackInterfacesPair<UnityEditor.Build.IPreprocessBuild, UnityEditor.Build.IPreprocessBuildWithReport> (System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuild>,System.Action`1<UnityEditor.Build.IPreprocessBuild>,System.Collections.Generic.List`1<UnityEditor.Build.IPreprocessBuildWithReport>,System.Action`1<UnityEditor.Build.IPreprocessBuildWithReport>,bool)
+UnityEditor.Build.BuildPipelineInterfaces:OnBuildPreProcess (UnityEditor.Build.Reporting.BuildReport)
+UnityEditor.BuildPipeline:BuildPlayerInternalNoCheck (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[],bool)
+UnityEditor.BuildPipeline:BuildPlayerInternal (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (string[],string,string,UnityEditor.BuildTargetGroup,UnityEditor.BuildTarget,int,UnityEditor.BuildOptions,string[])
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerOptions)
+UnityEditor.BuildPipeline:BuildPlayer (UnityEditor.BuildPlayerWithProfileOptions)
+UnityEditor.Build.Profile.BuildProfileCLI:BuildActiveProfileWithPath (string)
+
+(Filename: ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRProjectValidation.cs Line: 520)
+
+BuildFailedException: OpenXR Build Failed.
+  at UnityEditor.XR.OpenXR.OpenXRProjectValidationBuildStep.OnPreprocessBuild (UnityEditor.Build.Reporting.BuildReport report) [0x00040] in .\Library\PackageCache\com.unity.xr.openxr@ef0033a586bf\Editor\OpenXRProjectValidationRulesSetup.cs:235 
+  at UnityEditor.Build.BuildPipelineInterfaces+<>c__DisplayClass17_0.<OnBuildPreProcess>b__1 (UnityEditor.Build.IPreprocessBuildWithReport bpp) [0x00000] in <8740d1a42447456fb4d6b16f148b70d3>:0 
+  at UnityEditor.Build.BuildPipelineInterfaces.InvokeCallbackInterfacesPair[T1,T2] (System.Collections.Generic.List`1[T] oneInterfaces, System.Action`1[T] invocationOne, System.Collections.Generic.List`1[T] twoInterfaces, System.Action`1[T] invocationTwo, System.Boolean exitOnFailure) [0x000ff] in <8740d1a42447456fb4d6b16f148b70d3>:0 
+UnityEngine.DebugLogHandler:Internal_LogException_Injected(Exception, IntPtr)
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEditor.Build.BuildPipelineInterfaces:InvokeCallbackInterfacesPair(List`1, Action`1, List`1, Action`1, Boolean)
+UnityEditor.Build.BuildPipelineInterfaces:OnBuildPreProcess(BuildReport)
+UnityEditor.BuildPipeline:BuildPlayerInternalNoCheck_Injected(String[], ManagedSpanWrapper&, ManagedSpanWrapper&, BuildTargetGroup, BuildTarget, Int32, BuildOptions, String[], Boolean)
+UnityEditor.BuildPipeline:BuildPlayerInternalNoCheck(String[], String, String, BuildTargetGroup, BuildTarget, Int32, BuildOptions, String[], Boolean)
+UnityEditor.BuildPipeline:BuildPlayerInternal(String[], String, String, BuildTargetGroup, BuildTarget, Int32, BuildOptions, String[])
+UnityEditor.BuildPipeline:BuildPlayer(String[], String, String, BuildTargetGroup, BuildTarget, Int32, BuildOptions, String[])
+UnityEditor.BuildPipeline:BuildPlayer(BuildPlayerOptions)
+UnityEditor.BuildPipeline:BuildPlayer(BuildPlayerWithProfileOptions)
+UnityEditor.Build.Profile.BuildProfileCLI:BuildActiveProfileWithPath(String)
+
+(Filename: ./Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Editor/OpenXRProjectValidationRulesSetup.cs Line: 235)
+
+Start importing Assets/XR/Settings/OpenXRPackageSettings.asset using Guid(0969fb805135546889579bbbc564a98c) (NativeFormatImporter) -> (artifact id: 'f83a746e97980f33e5cae58085a23e7d') in 0.0186419 seconds
+Refreshing native plugins compatible for Editor in 33.67 ms, found 6 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=9325506b4fadfd14cbd79a76ed55e79b): Total: 0.215 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+DisplayProgressNotification: Build Failed
+Error building Player: 3 errors
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 31 unused Assets / (4.6 KB). Loaded Objects now: 1653.
+Memory consumption went from 111.6 MB to 111.6 MB.
+Total: 45.560100 ms (FindLiveObjects: 0.219900 ms CreateObjectMapping: 0.096500 ms MarkObjects: 45.102200 ms  DeleteObjects: 0.139400 ms)
+
+Build Finished, Result: Failure.
+##utp:{"type":"PlayerBuildInfo","version":2,"phase":"Immediate","time":1793717156685,"processId":15896,"steps":[{"description":"Preprocess Player","duration":603}],"duration":603}
+Batchmode quit successfully invoked - shutting down!
+Curl error 42: Callback aborted
+Killing ADB server in 2,6246108 seconds.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input System polling thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-User-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-User channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+abort_threads: Failed aborting id: 000000000000E698, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000B558, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000E698, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000B558, mono_thread_manage will ignore it
+
+debugger-agent: Unable to listen on 2992
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0
