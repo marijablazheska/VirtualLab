@@ -1489,8 +1489,18 @@ public class VrGazeController : MonoBehaviour
         reticle = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         reticle.name = "VR Gaze Reticle";
         reticle.transform.localScale = Vector3.one * .035f;
-        reticle.GetComponent<Renderer>().material = new Material(Shader.Find("Standard"));
-        reticle.GetComponent<Renderer>().material.color = new Color(.04f, .85f, .78f, .85f);
+
+        var shader = Shader.Find("Sprites/Default");
+        if (shader == null) shader = Shader.Find("Universal Render Pipeline/Unlit");
+        if (shader == null) shader = Shader.Find("Unlit/Color");
+
+        var renderer = reticle.GetComponent<Renderer>();
+        if (shader != null)
+        {
+            renderer.material = new Material(shader);
+            renderer.material.color = new Color(.04f, .85f, .78f, .85f);
+        }
+
         Destroy(reticle.GetComponent<Collider>());
         reticle.SetActive(false);
     }
