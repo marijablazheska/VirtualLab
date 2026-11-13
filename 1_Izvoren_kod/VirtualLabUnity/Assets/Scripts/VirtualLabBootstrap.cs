@@ -667,7 +667,9 @@ public class VirtualLabBootstrap : MonoBehaviour
             if (File.Exists(path)) return File.ReadAllText(path).Trim();
         }
         catch (System.Exception) { }
-        return "";
+
+        var asset = Resources.Load<TextAsset>("gemini_key");
+        return asset != null ? asset.text.Trim() : "";
     }
 
     private void Mix()

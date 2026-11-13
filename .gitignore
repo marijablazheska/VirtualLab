@@ -12,3 +12,10 @@
 # OS files
 .DS_Store
 Thumbs.db
+gemini_key.txt
+Assets/Resources/gemini_key.txt
+Assets/Resources/gemini_key.txt.meta
+gemini_key.txt*
+.idea/
+*.apk
+*.zip
